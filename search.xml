@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Markdown写作模板]]></title>
+    <url>%2F2019%2Fmarkdown01%2F</url>
+    <content type="text"><![CDATA[markdown 在hexo 中的渲染主题自带样式 文本居中引用 1效果：人生乃是一面镜子，从镜子里认识自己，我要称之为头等大事，也只是我们追求的目的！ 代码：123456&#123;% cq %&#125;人生乃是一面镜子，从镜子里认识自己，我要称之为头等大事， 也只是我们追求的目的！&#123;% endcq %&#125; 主题自带样式 note 标签default 1&lt;div class=&quot;note default&quot;&gt;&lt;p&gt;default&lt;/p&gt;&lt;/div&gt; primary 1&lt;div class=&quot;note primary&quot;&gt;&lt;p&gt;primary&lt;/p&gt;&lt;/div&gt; success 1&lt;div class=&quot;note success&quot;&gt;&lt;p&gt;success&lt;/p&gt;&lt;/div&gt; info 1&lt;div class=&quot;note info&quot;&gt;&lt;p&gt;info&lt;/p&gt;&lt;/div&gt; warning 1&lt;div class=&quot;note warning&quot;&gt;&lt;p&gt;warning&lt;/p&gt;&lt;/div&gt; danger 1&lt;div class=&quot;note danger&quot;&gt;&lt;p&gt;danger&lt;/p&gt;&lt;/div&gt; danger no-icon 1&lt;div class=&quot;note danger no-icon&quot;&gt;&lt;p&gt;danger no-icon&lt;/p&gt;&lt;/div&gt; 主题自带样式 label 标签 default 1&#123;% label default@default %&#125; primary 1&#123;% label primary@primary %&#125; success 1&#123;% label success@success %&#125; info 1&#123;% label info@info %&#125; warning 1&#123;% label warning@warning %&#125; danger 1&#123;% label danger@danger %&#125; 主题自带样式 tabs 标签效果选项卡 1选项卡 2选项卡 3这是选项卡 1 呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈……这是选项卡 2这是选项卡 3 哇，你找到我了！φ(≧ω≦*)♪～ 源码 1234567891011&#123;% tabs 选项卡, 2 %&#125;&lt;!-- tab --&gt;**这是选项卡 1** 呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈……&lt;!-- endtab --&gt;&lt;!-- tab --&gt;**这是选项卡 2**&lt;!-- endtab --&gt;&lt;!-- tab --&gt;**这是选项卡 3** 哇，你找到我了！φ(≧ω≦*)♪～&lt;!-- endtab --&gt;&#123;% endtabs %&#125; 主题自带样式 按钮源码 1&#123;% btn https://www.baidu.com, 点击下载百度, download fa-lg fa-fw %&#125; 效果点击下载百度 自定义样式 引用首先由于是自定义的样式，故要自己将 CSS 代码加到custom.styl中，下文的自定义样式都是如此。为什么可以自定义呢？如果你是一个和我一样的小白，可以点击这里了解了解 CSS 中id和class的知识。 需加入custom.styl的代码：123456789// 自定义的引用样式blockquote.question &#123; color: #555; border-left: 4px solid rgb(16, 152, 173); background-color: rgb(227, 242, 253); border-top-right-radius: 3px; border-bottom-right-radius: 3px; margin-bottom: 20px;&#125; 文字颜色改color的值 背景色改background-color的值 边框颜色和粗细改border-left的值 1 打造个性超赞博客Hexo+NexT+GitHubPages的超深度优化)]]></content>
+      <categories>
+        <category>markdown</category>
+      </categories>
+      <tags>
+        <tag>markdown</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[post]]></title>
+    <url>%2F2019%2Fpost%2F</url>
+    <content type="text"><![CDATA[666哈哈1int a = 0;]]></content>
+      <categories>
+        <category>sd,fg</category>
+      </categories>
+      <tags>
+        <tag>as</tag>
+        <tag>asdf</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2019%2Fsdfg%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick Start Create a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+      <categories>
+        <category>sd,fg</category>
+      </categories>
+      <tags>
+        <tag>as</tag>
+        <tag>f</tag>
+      </tags>
+  </entry>
+</search>

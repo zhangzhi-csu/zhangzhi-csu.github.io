@@ -138,7 +138,7 @@
   
 
 
-
+<link rel="stylesheet" type="text/css" href="/live2/waifu.min.css">
 
   <meta name="description" content="学习笔记">
 <meta property="og:type" content="website">
@@ -213,6 +213,58 @@
   
     
   
+
+
+      
+
+    <div class="waifu">
+        <div class="waifu-tips"></div>
+        <canvas id="live2d" class="live2d"></canvas>
+        <div class="waifu-tool">
+            <span class="fui-home"></span>
+            <span class="fui-chat"></span>
+            <span class="fui-eye"></span>
+            <span class="fui-user"></span>
+            <span class="fui-photo"></span>
+            <span class="fui-info-circle"></span>
+            <span class="fui-cross"></span>
+        </div>
+    </div>
+    
+    <script src="/live2/jquery.min.js"></script> 
+    <!-- 实现拖动效果，需引入 JQuery UI -->
+    <script src="/live2/jquery-ui.min.js"></script>
+
+    <script src="/live2/waifu-tips.min.js"></script>
+    <script src="/live2/live2d.min.js"></script>
+    
+
+
+
+  <script type="text/javascript">
+    /* 可直接修改部分参数 */
+    live2d_settings['modelId'] = 1;                  // 默认模型 ID 1-4
+    live2d_settings['modelTexturesId'] = 15;         // 默认材质 ID 1-30
+    live2d_settings['modelStorage'] = false;         // 不储存模型 ID
+    live2d_settings['canCloseLive2d'] = false;       // 隐藏 关闭看板娘 按钮
+    live2d_settings['canTakeScreenshot']    = false;     
+    live2d_settings['canTurnToAboutPage']   = false; 
+    live2d_settings['waifuSize'] = '330x295';        // 看板娘大小
+    live2d_settings['waifuTipsSize'] = '313x82';    // 提示框大小
+    live2d_settings['waifuFontSize'] = '15px';       // 提示框字体
+    live2d_settings['waifuToolFont'] = '20px';       // 工具栏字体
+    live2d_settings['waifuToolLine'] = '28px';       // 工具栏行高
+    live2d_settings['waifuToolTop'] = '-33px';       // 工具栏顶部边距
+    live2d_settings['waifuDraggable'] = 'axis-x';    // 拖拽样式
+    live2d_settings['waifuDraggableRevert'] = true;   
+		live2d_settings['waifuEdgeSide']  = 'left:20'; 
+    /* 在 initModel 前添加 */
+    initModel("/live2/waifu-tips.json?v=1.4.2")
+  </script>
+
+
+
+
 
   <div class="container sidebar-position-left ">
     <div class="headband"></div>
@@ -401,13 +453,11 @@
   
   
   <div class="post-block tag">
-
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>f<small>标签</small>
+        <h1>f
         </h1>
       </div>
-
       
         
         
@@ -603,8 +653,43 @@
           
             
           
-          
-
+          <div id="days" style="text-align : center; color:rgb(161, 102, 171); font-size: 14px;"></div>
+<script>
+function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("12/01/2018 15:00:00");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();
+</script>
+    
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+<div class="widget-wrap">
+    <div id="myCanvasContainer" class="widget tagcloud">
+        <canvas width="250" height="200" id="resCanvas" style="width=100%">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/as/">as</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asdf/">asdf</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/f/">f</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li></ul>
+        </canvas>
+    </div>
+</div>
+ 
         </div>
       </div>
 
@@ -1128,6 +1213,13 @@
       }
     });
   </script>
+  <!-- 打字礼花及震动特效 -->
+  <script type="text/javascript" src="/js/src/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true; // ture 为启用礼花特效
+    POWERMODE.shake = false; // false 为禁用震动特效
+    document.body.addEventListener('input', POWERMODE);
+  </script> 
 
 
 
@@ -1223,7 +1315,8 @@
 
   
 
-  <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="/js/src/clicklove.js"></script>
-</body>
-</html>
+  <!-- 页面点击小红心/ 文字 -->
+  <script type="text/javascript" src="/js/src/clicklove.js"></script> 
+
+
+</body></html>

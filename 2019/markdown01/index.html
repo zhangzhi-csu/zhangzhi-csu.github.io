@@ -142,10 +142,19 @@
 <meta property="og:site_name" content="小箱子">
 <meta property="og:description" content="整理的markdown语法，以及在hexo中的特殊渲染">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-16T05:25:09.689Z">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0065saiygy1g1799tc2g8j30gb04mmx0.jpg">
+<meta property="og:image" content="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=702257389,1274025419&fm=27&gp=0.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0065saiygy1g179t1gt8cj30eo04j3yd.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0065saiygy1g179vkbegbj30c804yjra.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0065saiygy1g17a0kot6hj30bq03cq2r.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0065saiygy1g17a3role7j30da08zjrt.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0065saiygy1g17a4umoxxj309602ugli.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0065saiygy1g17b18hbg1j303y0280si.jpg">
+<meta property="og:updated_time" content="2019-03-18T14:53:28.733Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Markdown写作模板">
 <meta name="twitter:description" content="整理的markdown语法，以及在hexo中的特殊渲染">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/0065saiygy1g1799tc2g8j30gb04mmx0.jpg">
 
 
 
@@ -217,9 +226,9 @@
         <div class="waifu-tips"></div>
         <canvas id="live2d" class="live2d"></canvas>
         <div class="waifu-tool">
+            <span class="fui-chat"></span>
             <!-- <span class="fui-eye"></span>
             <span class="fui-home"></span>
-            <span class="fui-chat"></span>
             <span class="fui-cross"></span>
             <span class="#tor_show"></span>
             <span class="comment_reply"></span>
@@ -270,7 +279,7 @@
     live2d_settings['waifuFontSize'] = '15px';       // 提示框字体
     live2d_settings['waifuToolFont'] = '20px';       // 工具栏字体
     live2d_settings['waifuToolLine'] = '28px';       // 工具栏行高
-    live2d_settings['waifuToolTop'] = '-33px';       // 工具栏顶部边距
+    live2d_settings['waifuToolTop'] = '-50px';       // 工具栏顶部边距
     live2d_settings['waifuDraggable'] = 'axis-x';    // 拖拽样式
     live2d_settings['waifuDraggableRevert'] = true;   
 		live2d_settings['waifuEdgeSide']  = 'left:20'; 
@@ -528,7 +537,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-16 13:25:09" itemprop="dateModified" datetime="2019-03-16T13:25:09+08:00">2019-03-16</time>
+                <time title="修改时间：2019-03-18 22:53:28" itemprop="dateModified" datetime="2019-03-18T22:53:28+08:00">2019-03-18</time>
               
             
           </span>
@@ -680,9 +689,191 @@
 <li>背景色改background-color的值</li>
 <li>边框颜色和粗细改border-left的值</li>
 </ul>
+<h2 id="markdown-格式"><a href="#markdown-格式" class="headerlink" title="markdown 格式"></a>markdown 格式</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">...</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure>
+<p>效果：<br><img src="http://ww1.sinaimg.cn/large/0065saiygy1g1799tc2g8j30gb04mmx0.jpg" alt></p>
+<h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">**粗体** </span><br><span class="line">*斜体*  </span><br><span class="line">***斜体加粗*** </span><br><span class="line">~~删除线~~ </span><br><span class="line">&lt;font color =&quot;red&quot;&gt;示例md代码:&lt;/font&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>粗体</strong> </li>
+<li><em>斜体</em>  </li>
+<li><strong><em>斜体加粗</em></strong> </li>
+<li><del>删除线</del> </li>
+<li><font color="red">示例md代码:</font>
+
+</li>
+</ul>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; 引用1</span><br><span class="line">&gt;&gt; 引用2</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<blockquote>
+<p>引用1</p>
+<blockquote>
+<p>引用2</p>
+</blockquote>
+</blockquote>
+<h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">---</span><br><span class="line">***</span><br><span class="line">***</span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">![alt](url &apos;&apos;title&apos;&apos;)</span><br><span class="line"></span><br><span class="line">alt表示图片显示失败时的替换文本</span><br><span class="line">title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加</span><br><span class="line"></span><br><span class="line">例如：</span><br><span class="line">![blockchain](https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=702257389,1274025419&amp;fm=27&amp;gp=0.jpg &quot;区块链&quot;)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=702257389,1274025419&amp;fm=27&amp;gp=0.jpg" alt="pic1" title="区块链"></p>
+<h3 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h3><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[超链接名](超链接地址 &quot;超链接title&quot;)</span><br><span class="line"></span><br><span class="line">title可加可不加</span><br><span class="line"></span><br><span class="line">例如：</span><br><span class="line">[简书](http://jianshu.com)</span><br><span class="line">[百度](http://baidu.com &quot;到百度&quot;)</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://jianshu.com" target="_blank" rel="noopener">简书</a><br><a href="http://baidu.com" title="到百度" target="_blank" rel="noopener">百度</a></p>
+<p>html语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;超链接地址&quot; target=&quot;_blank&quot;&gt;超链接名&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">例如：</span><br><span class="line">&lt;a href=&quot;https://www.jianshu.com&quot; target=&quot;_blank&quot;&gt;简书&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://www.jianshu.com" target="_blank">简书</a></p>
+<h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- 列表内容</span><br><span class="line">+ 列表内容</span><br><span class="line">* 列表内容</span><br><span class="line"></span><br><span class="line">注意：- + * 跟内容之间都要有一个空格</span><br></pre></td></tr></table></figure></p>
+<p>效果：</p>
+<ul>
+<li>列表1-</li>
+<li>列表2-</li>
+</ul>
+<ul>
+<li>列表1+</li>
+<li>列表2+</li>
+</ul>
+<h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">数字加点</span><br><span class="line"></span><br><span class="line">1.列表内容</span><br><span class="line">2.列表内容</span><br><span class="line">3.列表内容</span><br><span class="line"></span><br><span class="line">注意：序号跟内容之间要有空格</span><br></pre></td></tr></table></figure></p>
+<p>例如：</p>
+<ol>
+<li>列表内容</li>
+<li>列表内容</li>
+<li>列表内容</li>
+</ol>
+<h3 id="列表嵌套"><a href="#列表嵌套" class="headerlink" title="列表嵌套"></a>列表嵌套</h3><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">上一级和下一级之间敲三个空格即可</span><br></pre></td></tr></table></figure></p>
+<p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- 一级无序</span><br><span class="line">   - 二级无序</span><br><span class="line">   - 二级无序</span><br><span class="line">- 一级无序</span><br><span class="line">   1. 二级有序</span><br><span class="line">   2. 二级有序</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://ww1.sinaimg.cn/large/0065saiygy1g179t1gt8cj30eo04j3yd.jpg" alt></p>
+<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">表头|表头|表头</span><br><span class="line">---|:--:|---:</span><br><span class="line">内容|内容|内容</span><br><span class="line">内容|内容|内容</span><br><span class="line"></span><br><span class="line">第二行分割表头和内容。</span><br><span class="line">- 有一个就行，为了对齐，多加了几个</span><br><span class="line">文字默认居左</span><br><span class="line">-两边加：表示文字居中</span><br><span class="line">-右边加：表示文字居右</span><br><span class="line">注：原生的语法两边都要用 | 包起来。此处省略</span><br></pre></td></tr></table></figure></p>
+<p>在线生成HTML代码 <a href="http://www.tablesgenerator.com/" title="国外" target="_blank" rel="noopener">Tables Generator</a></p>
+<p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">姓名|技能|排行</span><br><span class="line">--|:--:|--:</span><br><span class="line">刘备|哭|大哥</span><br><span class="line">关羽|打|二哥</span><br><span class="line">张飞|骂|三弟</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://ww1.sinaimg.cn/large/0065saiygy1g179vkbegbj30c804yjra.jpg" alt></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">单行代码:</span><br><span class="line">`int a;`</span><br></pre></td></tr></table></figure></p>
+<p><code>int a;</code></p>
+<p>代码块<br><img src="http://ww1.sinaimg.cn/large/0065saiygy1g17a0kot6hj30bq03cq2r.jpg" alt><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)&#123;</span><br><span class="line">    a = a + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h3><p><img src="http://ww1.sinaimg.cn/large/0065saiygy1g17a3role7j30da08zjrt.jpg" alt></p>
+<div id="flowchart-0" class="flow-chart"></div>
+| 6种类型     | 含义   |
+|-------------|--------|
+| start       | 启动   |
+| end         | 结束   |
+| operation   | 程序   |
+| subroutine  | 子程序 |
+| condition   | 条件   |
+| inputoutput | 输出   |
+
+| 形参          | 实参        | 含义                                                              |
+|---------------|-------------|-------------------------------------------------------------------|
+| ->            | ->          | 连接                                                              |
+| condition     | c1          | 条件                                                              |
+| (布尔值,方向) | (yes,right) | 如果满足向右连接，4种方向：right ，left，up ，down   默认为：down |
+
+| 形参    | 实参                        | 含义                      |
+|---------|-----------------------------|---------------------------|
+| tag     | st                          | 标签 (可以自定义)         |
+| =>      | =>                          | 赋值                      |
+| type    | start                       | 类型 (6种类型)            |
+| content | 开始                        | 描述内容 (可以自定义)     |
+| :>url   | http://www.baidu.com[blank] | 链接与跳转方式 兼容性很差 |
+
+![](http://ww1.sinaimg.cn/large/0065saiygy1g17bm6ub5xj308b0600st.jpg)
+<div id="sequence-0"></div>
+
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>实线</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>实心箭头</td>
+</tr>
+<tr>
+<td>—</td>
+<td>虚线</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>空心箭头</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="http://ww1.sinaimg.cn/large/0065saiygy1g17a4umoxxj309602ugli.jpg" alt></p>
+<div id="sequence-1"></div>
+
+
+<h3 id="Latex数学公式"><a href="#Latex数学公式" class="headerlink" title="Latex数学公式"></a>Latex数学公式</h3><ul>
+<li><p>行内公式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">使用两个”$”符号引用公式</span><br><span class="line">$公式$</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>行间公式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">使用两对“$$”符号引用公式：</span><br><span class="line">$$公式$$</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">简单的规则：</span><br><span class="line">（1）空格：LaTeX中空格用来隔开单词(英语一类字母文字)，多个空格等效于一个空格；对中文没有作用。 </span><br><span class="line">（2）换行：用控制命令“\”,或“ \newline”. </span><br><span class="line">（3）分段：用控制命令“\par” 或空出一行。 </span><br><span class="line">（4）换页：用控制命令“\newpage”或“\clearpage” </span><br><span class="line">（5）特殊控制字符：#，$, %, &amp;, - ,&#123;, &#125;, ^, ~ </span><br><span class="line">\# \$ \% \&amp; \- \&#123; \&#125; \^&#123;&#125; \~&#123;&#125; $\backslash$表示“ \”.。</span><br></pre></td></tr></table></figure>
+<p>常见数学符号</p>
+<ol>
+<li>指数和下标可以用^和_后加相应字符来实现。比如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$a_&#123;1&#125;$ \qquad $x^&#123;2&#125;$ \qquad</span><br><span class="line">$e^&#123;-\alpha t&#125;$ \qquad</span><br><span class="line">$a^&#123;3&#125;_&#123;ij&#125;$\\</span><br><span class="line">$e^&#123;x^2&#125; \neq &#123;e^x&#125;^2$</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<script type="math/tex; mode=display">a_{1}</script><script type="math/tex; mode=display">x^{2}</script><script type="math/tex; mode=display">e^{-\alpha t}</script><script type="math/tex; mode=display">a^{3}_{ij}</script><script type="math/tex; mode=display">e^{x^2} \neq {e^x}^2</script><ol>
+<li>平方根<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$$\sqrt&#123;x&#125;$$</span><br><span class="line">$$\sqrt&#123; x^&#123;2&#125;+\sqrt&#123;y&#125; &#125;$$</span><br><span class="line">$$\sqrt[3]&#123;2&#125;$$</span><br><span class="line">$$\surd[x^2 + y^2]$$</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<script type="math/tex; mode=display">\sqrt{x}</script><script type="math/tex; mode=display">\sqrt{ x^{2}+\sqrt{y} }</script><script type="math/tex; mode=display">\sqrt[3]{2}</script><script type="math/tex; mode=display">\surd[x^2 + y^2]</script><ol>
+<li>命令<code>\overline</code> 和<code>\underline</code> 在表达式的上、下方画出水平线。比如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$$\overline&#123;m+n&#125;$$</span><br><span class="line">$$\underline&#123;m+n&#125;$$</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<script type="math/tex; mode=display">\overline{m+n}</script><script type="math/tex; mode=display">\underline{m+n}</script><ol>
+<li>命令<code>\overbrace</code> 和<code>\underbrace</code> 在表达式的上、下方给出一水平的大括号。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$\underbrace&#123; a+b+\cdots+z &#125;_&#123;26&#125;$$</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<script type="math/tex; mode=display">\underbrace{ a+b+\cdots+z }_{26}</script><h3 id="todo列表"><a href="#todo列表" class="headerlink" title="todo列表"></a>todo列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- [ ] 未处理1</span><br><span class="line">- [ ] 未处理2</span><br><span class="line">- [x] 已处理1</span><br><span class="line">- [x] 已处理2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>[ ] 未处理1</li>
+<li>[ ] 未处理2</li>
+<li>[x] 已处理1</li>
+<li>[x] 已处理2</li>
+</ul>
+<h3 id="锚点"><a href="#锚点" class="headerlink" title="锚点"></a>锚点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[锚点][锚点的定义]的 目标内容中不能有大写字母和空格，所以如果锚点目标的目标内容中有大写字母或空格，则需要在定义锚点中的目标内容时，</span><br><span class="line">把大写字母改成小写字母，</span><br><span class="line">把空格改成 -；</span><br><span class="line"></span><br><span class="line">[锚点][锚点的定义]的 目标内容 中不能含有以下字符：</span><br><span class="line">半角点(即英文中的句号).</span><br><span class="line"></span><br><span class="line">[回到顶部](##markdown_在hexo_中的渲染)</span><br><span class="line">[数学公式](#latex数学公式)</span><br></pre></td></tr></table></figure>
+<p><a href="#markdown-在hexo-中的渲染">回到顶部</a><br><a href="#latex数学公式">数学公式</a></p>
+<h3 id="diff语法"><a href="#diff语法" class="headerlink" title="diff语法"></a>diff语法</h3><p><img src="http://ww1.sinaimg.cn/large/0065saiygy1g17b18hbg1j303y0280si.jpg" alt><br><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+ new code</span></span><br><span class="line"><span class="deletion">- old code</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="脚注"><a href="#脚注" class="headerlink" title="脚注"></a>脚注</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Markdown<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></span><br><span class="line">
+
+### 自动邮箱连接
+<escape><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;xxx@outlook.com&gt;</span><br></pre></td></tr></table></figure>
+<p><a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#x78;&#x78;&#x78;&#64;&#x6f;&#x75;&#x74;&#x6c;&#x6f;&#x6f;&#107;&#x2e;&#x63;&#111;&#109;">&#x78;&#x78;&#x78;&#64;&#x6f;&#x75;&#x74;&#x6c;&#x6f;&#x6f;&#107;&#x2e;&#x63;&#111;&#109;</a></p>
 <hr>
 
 <p><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> <a href="https://reuixiy.github.io/technology/computer/computer-aided-art/2017/06/09/hexo-next-optimization.html#%E5%A5%BD%E7%8E%A9%E7%9A%84%E5%86%99%E4%BD%9C%E6%A0%B7%E5%BC%8F" target="_blank" rel="noopener">打造个性超赞博客Hexo+NexT+GitHubPages的超深度优化</a></p>
+<p><script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">st=>start: Start|past:>http://www.google.com[blank]
+e=>end: End:>http://www.google.com
+op1=>operation: My Operation|past
+op2=>operation: Stuff|current 
+sub1=>subroutine: My Subroutine|invalid
+cond=>condition: Yes
+or No?|approved:>http://www.google.com
+c2=>condition: Good idea|rejected
+io=>inputoutput: catch something...|request
+
+st->op1(right)->cond
+cond(yes, right)->c2
+cond(no)->sub1(left)->op1
+c2(yes)->io->e
+c2(no)->op2->e</textarea><textarea id="flowchart-0-options" style="display: none">{"theme":"simple","scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script><script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.27/webfontloader.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.4.1/snap.svg-min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script><textarea id="sequence-0-code" style="display: none">    起床->吃饭: 稀饭油条
+    吃饭->上班: 不要迟到了
+    上班->午餐: 吃撑了
+    上班->下班:
+    Note right of 下班: 下班了
+    下班->回家:
+    Note right of 回家: 到家了
+    回家-->>起床:
+    Note left of 起床: 新的一天</textarea><textarea id="sequence-0-options" style="display: none">{"theme":"simple","scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("sequence-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("sequence-0-options").value));  var diagram = Diagram.parse(code);  diagram.drawSVG("sequence-0", options);</script><textarea id="sequence-1-code" style="display: none">Alice->Bob: Hello Bob, how are you?
+Note right of Bob: Bob thinks
+Bob-->Alice: I am good thanks!</textarea><textarea id="sequence-1-options" style="display: none">{"theme":"simple","scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("sequence-1-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("sequence-1-options").value));  var diagram = Diagram.parse(code);  diagram.drawSVG("sequence-1", options);</script><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Markdown是一种纯文本标记语言</span><br></li></ol></div></div></p></escape></span></pre></td></tr></table></figure><a href="#fnref:1" rev="footnote"> ↩</a>&lt;/div&gt;<p></p>
 
       
     </div>
@@ -753,8 +944,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/post/" rel="next" title="post">
-                <i class="fa fa-chevron-left"></i> post
+              <a href="/2019/sdfg/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
@@ -836,7 +1027,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -882,9 +1073,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -921,30 +1110,9 @@
                   <a href="mailto:1490295322@qq.com" title="E-Mail &rarr; mailto:1490295322@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                 </span>
               
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://weibo.com/u/5577391446" title="Weibo &rarr; https://weibo.com/u/5577391446" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
-                </span>
-              
             </div>
           
 
-          
-             <div class="cc-license motion-element" itemprop="license">
-              
-              
-                
-              
-              
-              
-              <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc.svg" alt="Creative Commons"></a>
-             </div>
           
 
           
@@ -985,7 +1153,7 @@ show_date_time();
 <div class="widget-wrap">
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="200" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/as/">as</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asdf/">asdf</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/f/">f</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/as/">as</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/f/">f</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li></ul>
         </canvas>
     </div>
 </div>
@@ -1004,7 +1172,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#markdown-在hexo-中的渲染"><span class="nav-number">1.</span> <span class="nav-text">markdown 在hexo 中的渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主题自带样式-文本居中引用-1"><span class="nav-number">1.1.</span> <span class="nav-text">主题自带样式 文本居中引用 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主题自带样式-note-标签"><span class="nav-number">1.2.</span> <span class="nav-text">主题自带样式 note 标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主题自带样式-label-标签"><span class="nav-number">1.3.</span> <span class="nav-text">主题自带样式 label 标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主题自带样式-tabs-标签"><span class="nav-number">1.4.</span> <span class="nav-text">主题自带样式 tabs 标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主题自带样式-按钮"><span class="nav-number">1.5.</span> <span class="nav-text">主题自带样式 按钮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义样式-引用"><span class="nav-number">1.6.</span> <span class="nav-text">自定义样式 引用</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#markdown-在hexo-中的渲染"><span class="nav-number">1.</span> <span class="nav-text">markdown 在hexo 中的渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主题自带样式-文本居中引用-1"><span class="nav-number">1.1.</span> <span class="nav-text">主题自带样式 文本居中引用 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主题自带样式-note-标签"><span class="nav-number">1.2.</span> <span class="nav-text">主题自带样式 note 标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主题自带样式-label-标签"><span class="nav-number">1.3.</span> <span class="nav-text">主题自带样式 label 标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主题自带样式-tabs-标签"><span class="nav-number">1.4.</span> <span class="nav-text">主题自带样式 tabs 标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主题自带样式-按钮"><span class="nav-number">1.5.</span> <span class="nav-text">主题自带样式 按钮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义样式-引用"><span class="nav-number">1.6.</span> <span class="nav-text">自定义样式 引用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#markdown-格式"><span class="nav-number">2.</span> <span class="nav-text">markdown 格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标题"><span class="nav-number">2.1.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字体"><span class="nav-number">2.2.</span> <span class="nav-text">字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用"><span class="nav-number">2.3.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分割线"><span class="nav-number">2.4.</span> <span class="nav-text">分割线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片"><span class="nav-number">2.5.</span> <span class="nav-text">图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#超链接"><span class="nav-number">2.6.</span> <span class="nav-text">超链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无序列表"><span class="nav-number">2.7.</span> <span class="nav-text">无序列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有序列表"><span class="nav-number">2.8.</span> <span class="nav-text">有序列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表嵌套"><span class="nav-number">2.9.</span> <span class="nav-text">列表嵌套</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表格"><span class="nav-number">2.10.</span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">2.11.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流程图"><span class="nav-number">2.12.</span> <span class="nav-text">流程图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Latex数学公式"><span class="nav-number">2.13.</span> <span class="nav-text">Latex数学公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#todo列表"><span class="nav-number">2.14.</span> <span class="nav-text">todo列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#锚点"><span class="nav-number">2.15.</span> <span class="nav-text">锚点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#diff语法"><span class="nav-number">2.16.</span> <span class="nav-text">diff语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#脚注"><span class="nav-number">2.17.</span> <span class="nav-text">脚注</span></a></li></ol></li></ol></div>
             
 
           </div>

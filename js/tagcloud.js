@@ -15,7 +15,7 @@ addLoadEvent(function() {
        TagCanvas.textColour = '#AA076B';
        TagCanvas.textHeight = 25;
        TagCanvas.outlineColour = '#eee';
-       TagCanvas.maxSpeed = 0.5;
+       TagCanvas.maxSpeed = 0.2;
        TagCanvas.outlineMethod = 'block';
        TagCanvas.minBrightness = 0.2;
        TagCanvas.depth = 0.92;

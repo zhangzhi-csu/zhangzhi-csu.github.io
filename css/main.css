@@ -2004,7 +2004,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #2579bf;
+  background: #6c6c9f;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3749,14 +3749,7 @@ code {
   overflow: hidden;
 }
 img.img-topic {
-  width: 90%;
-}
-.mjpage__block {
-  display: inline-block;
-  text-align: center;
-  width: 100%;
-  overflow-x: auto;
-  vertical-align: bottom;
+  width: 80%;
 }
 @font-face {
   font-family: "socialshare";

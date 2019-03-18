@@ -1730,52 +1730,15 @@ pre .javascript .function {
 .fancybox-close:hover {
   border: none;
 }
-.post-widgets {
-  border-top: 1px solid #eee;
-  padding-top: 9px;
-  margin-top: 45px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: center;
+.post-copyright {
+  margin: 2em 0 0;
+  padding: 0.5em 1em;
+  border-left: 3px solid #ff1700;
+  background-color: #f9f9f9;
+  list-style: none;
 }
-.post-widgets .post-meta-divider {
-  height: 25px;
-  color: #999;
-}
-.wp_rating {
-  height: 20px;
-  margin-right: 10px;
-  text-align: center;
-  line-height: 20px;
-  padding-top: 6px;
-}
-.social-like {
-  font-size: 14px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-}
-.vk_like {
-  width: 85px;
-  height: 21px;
-  padding-top: 7px;
-  align-self: center;
-}
-.fb_like {
-  height: 30px;
-  align-self: center;
-}
-.bdsharebuttonbox {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-}
-.bdsharebuttonbox a {
-  border: none;
-}
-.bdshare-slide-button-box a {
-  border: none;
+.post-copyright i.fa {
+  font-size: 15px;
 }
 .rtl.post-body p,
 .rtl.post-body a,
@@ -1844,6 +1807,15 @@ pre .javascript .function {
 .my_post_copyright .copy-path:hover {
   color: #808080;
   cursor: pointer;
+}
+.passage_end::after {
+  content: "- The End -";
+  text-align: center;
+  color: #252525;
+  display: block;
+  font-size: 26px;
+  font-weight: bold;
+  font-family: Vladimir Script;
 }
 .sidebar {
   position: fixed;
@@ -2032,7 +2004,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #70ffb3;
+  background: #2579bf;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2401,29 +2373,6 @@ pre .javascript .function {
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   color: #ccc;
-}
-#needsharebutton-postbottom {
-  position: relative;
-  cursor: pointer;
-  height: 26px;
-}
-#needsharebutton-postbottom .btn {
-  display: initial;
-  padding: 1px 4px;
-  border: 1px solid #555;
-  border-radius: 3px;
-}
-#needsharebutton-float {
-  position: fixed;
-  bottom: 38px;
-  left: -8px;
-  z-index: 9999;
-  cursor: pointer;
-}
-#needsharebutton-float .btn {
-  padding: 0 10px 0 14px;
-  border: 1px solid #555;
-  border-radius: 4px;
 }
 .copy-btn {
   display: inline-block;
@@ -3056,7 +3005,6 @@ ul.breadcrumb li+li:last-child {
   background: #fff;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12), 0 -1px 0.5px 0 rgba(0,0,0,0.09);
   border-radius: initial;
-  opacity: 0;
 }
 .sidebar-inner.affix {
   position: fixed;
@@ -3802,6 +3750,238 @@ code {
 }
 img.img-topic {
   width: 90%;
+}
+.mjpage__block {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  overflow-x: auto;
+  vertical-align: bottom;
+}
+@font-face {
+  font-family: "socialshare";
+  src: url("../fonts/iconfont.eot");
+  src: url("../fonts/iconfont.eot?#iefix") format("embedded-opentype"), url("../fonts/iconfont.woff") format("woff"), url("../fonts/iconfont.ttf") format("truetype"), url("../fonts/iconfont.svg#iconfont") format("svg");
+}
+.socialshar {
+  font-family: "socialshare" !important;
+  font-size: 20px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+.socialshar * {
+  font-family: "socialshare" !important;
+}
+.socialshar .icon-tencent:before {
+  content: "\f07a";
+}
+.socialshar .icon-qq:before {
+  content: "\f11a";
+}
+.socialshar .icon-weibo:before {
+  content: "\f12a";
+}
+.socialshar .icon-wechat:before {
+  content: "\f09a";
+}
+.socialshar .icon-douban:before {
+  content: "\f10a";
+}
+.socialshar .icon-heart:before {
+  content: "\f20a";
+}
+.socialshar .icon-like:before {
+  content: "\f00a";
+}
+.socialshar .icon-qzone:before {
+  content: "\f08a";
+}
+.socialshar .icon-linkedin:before {
+  content: "\f01a";
+}
+.socialshar .icon-diandian:before {
+  content: "\f05a";
+}
+.socialshar .icon-facebook:before {
+  content: "\f03a";
+}
+.socialshar .icon-google:before {
+  content: "\f04a";
+}
+.socialshar .icon-twitter:before {
+  content: "\f06a";
+}
+.socialshar a {
+  position: relative;
+  text-decoration: none;
+  margin: 4px;
+  display: inline-block;
+  outline: none;
+}
+.socialshar .socialshar-icon {
+  position: relative;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+  border-radius: 50%;
+  line-height: 32px;
+  border: 1px solid #666;
+  color: #666;
+  text-align: center;
+  vertical-align: middle;
+  transition: background 0.6s ease-out 0s;
+}
+.socialshar .socialshar-icon:hover {
+  background: #666;
+  color: #fff;
+}
+.socialshar .icon-weibo {
+  color: #ff763b;
+  border-color: #ff763b;
+}
+.socialshar .icon-weibo:hover {
+  background: #ff763b;
+}
+.socialshar .icon-tencent {
+  color: #56b6e7;
+  border-color: #56b6e7;
+}
+.socialshar .icon-tencent:hover {
+  background: #56b6e7;
+}
+.socialshar .icon-qq {
+  color: #56b6e7;
+  border-color: #56b6e7;
+}
+.socialshar .icon-qq:hover {
+  background: #56b6e7;
+}
+.socialshar .icon-qzone {
+  color: #fdbe3d;
+  border-color: #fdbe3d;
+}
+.socialshar .icon-qzone:hover {
+  background: #fdbe3d;
+}
+.socialshar .icon-douban {
+  color: #33b045;
+  border-color: #33b045;
+}
+.socialshar .icon-douban:hover {
+  background: #33b045;
+}
+.socialshar .icon-linkedin {
+  color: #0077b5;
+  border-color: #0077b5;
+}
+.socialshar .icon-linkedin:hover {
+  background: #0077b5;
+}
+.socialshar .icon-facebook {
+  color: #44619d;
+  border-color: #44619d;
+}
+.socialshar .icon-facebook:hover {
+  background: #44619d;
+}
+.socialshar .icon-google {
+  color: #db4437;
+  border-color: #db4437;
+}
+.socialshar .icon-google:hover {
+  background: #db4437;
+}
+.socialshar .icon-twitter {
+  color: #55acee;
+  border-color: #55acee;
+}
+.socialshar .icon-twitter:hover {
+  background: #55acee;
+}
+.socialshar .icon-diandian {
+  color: #307dca;
+  border-color: #307dca;
+}
+.socialshar .icon-diandian:hover {
+  background: #307dca;
+}
+.socialshar .icon-wechat {
+  position: relative;
+  color: #7bc549;
+  border-color: #7bc549;
+}
+.socialshar .icon-wechat:hover {
+  background: #7bc549;
+}
+.socialshar .icon-wechat .wechat-qrcode {
+  display: none;
+  border: 1px solid #eee;
+  position: absolute;
+  z-index: 9;
+  top: -205px;
+  left: -84px;
+  width: 200px;
+  height: 192px;
+  color: #666;
+  font-size: 12px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 2px 10px #aaa;
+  transition: all 200ms;
+  -webkit-tansition: all 350ms;
+  -moz-transition: all 350ms;
+}
+.socialshar .icon-wechat .wechat-qrcode.bottom {
+  top: 40px;
+  left: -84px;
+}
+.socialshar .icon-wechat .wechat-qrcode.bottom:after {
+  display: none;
+}
+.socialshar .icon-wechat .wechat-qrcode h4 {
+  font-weight: normal;
+  height: 26px;
+  line-height: 26px;
+  font-size: 12px;
+  background-color: #f3f3f3;
+  margin: 0;
+  padding: 0;
+  color: #777;
+}
+.socialshar .icon-wechat .wechat-qrcode .qrcode {
+  width: 105px;
+  margin: 10px auto;
+}
+.socialshar .icon-wechat .wechat-qrcode .qrcode table {
+  margin: 0 !important;
+}
+.socialshar .icon-wechat .wechat-qrcode .help p {
+  font-weight: normal;
+  line-height: 16px;
+  padding: 0;
+  margin: 0;
+}
+.socialshar .icon-wechat .wechat-qrcode:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  margin-left: -6px;
+  bottom: -13px;
+  width: 0;
+  height: 0;
+  border-width: 8px 6px 6px 6px;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
+}
+.socialshar .icon-wechat:hover .wechat-qrcode {
+  display: block;
+}
+.post-spread {
+  margin-top: 20px;
+  text-align: center;
 }
 @-moz-keyframes play {
   0% {

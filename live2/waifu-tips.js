@@ -202,6 +202,7 @@ function loadModel(modelId, modelTexturesId) {
     } loadlive2d('live2d', live2d_settings.modelAPI+'get/?id='+modelId+'-'+modelTexturesId, (live2d_settings.showF12Status ? console.log('[Status]','live2d','模型',modelId+'-'+modelTexturesId,'加载完成'):null));
 }
 
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
 function loadTipsMessage(result) {
     $.each(result.mouseover, function (index, tips){
         $(document).on("mouseover", tips.selector, function (){
@@ -395,8 +396,24 @@ function loadTipsMessage(result) {
                 });
     	}
     }
+    function weather() {
+        var a=/省(.*)市/.exec(returnCitySN["cname"])[1];
+        var flickerAPI = "http://wthrcdn.etouch.cn/weather_mini?city="+a;
+
+        $.getJSON( flickerAPI, {
+            tags: "mount rainier",
+            tagmode: "any",
+            format: "json"
+        })
+        .done(function( data ) {
+        var str = data.data.city +"：今日" + data.data.forecast[0].type + ", " + data.data.forecast[1].high +" ," + data.data.forecast[1].low;
+        window.setTimeout(function() {showMessage(text, 3000, true);}, 5000);
+        showMessage(str, 5000, true);
+        });
+    };
     
-    $('.waifu-tool .fui-eye').click(function (){loadOtherModel()});
+    //$('.waifu-tool .fui-eye').click(function (){loadOtherModel()});
+    $('.waifu-tool .fui-eye').click(function (){weather()});
     $('.waifu-tool .fui-user').click(function (){loadRandTextures()});
     $('.waifu-tool .fui-chat').click(function (){showHitokoto()});
 }

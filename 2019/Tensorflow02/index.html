@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next gemini" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="https://fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: true,
+    fastclick: false,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+<link rel="stylesheet" type="text/css" href="/live2/waifu.min.css">
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "164e692b"
+    });
+  daovoice('update');
+  </script>
+
+
+  <meta name="description" content="Tensorflow框架">
+<meta name="keywords" content="MOOC,Tensorflow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tensorflow笔记（第二讲）">
+<meta property="og:url" content="https://Smart-zhi.github.io/2019/Tensorflow02/index.html">
+<meta property="og:site_name" content="小箱子">
+<meta property="og:description" content="Tensorflow框架">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/0065saiygy1g4ss815wf7j30jd07fdg4.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/0065saiyly1g4tdq6lu5gj30t80bdjsb.jpg">
+<meta property="og:updated_time" content="2019-07-09T13:32:15.996Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tensorflow笔记（第二讲）">
+<meta name="twitter:description" content="Tensorflow框架">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/0065saiygy1g4ss815wf7j30jd07fdg4.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="小箱子" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://Smart-zhi.github.io/2019/Tensorflow02/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Tensorflow笔记（第二讲） | 小箱子</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小箱子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-deeplearning">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/deeplearning/" rel="section"><i class="menu-item-icon fa fa-fw fa-fa brain"></i> <br>深度学习</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-books">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/books/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>图书</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-movies">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/movies/" rel="section"><i class="menu-item-icon fa fa-fw fa-youtube-play"></i> <br>电影</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+
+
+
+
+
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://Smart-zhi.github.io/2019/Tensorflow02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhi">
+      <meta itemprop="description" content="学习笔记">
+      <meta itemprop="image" content="/images/1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小箱子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Tensorflow笔记（第二讲）
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-08 21:06:54" itemprop="dateCreated datePublished" datetime="2019-07-08T21:06:54+08:00">2019-07-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-09 21:32:15" itemprop="dateModified" datetime="2019-07-09T21:32:15+08:00">2019-07-09</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Tensorflow/" itemprop="url" rel="index"><span itemprop="name">Tensorflow</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/Tensorflow02/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/Tensorflow02/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <div class="note info">
+Tensorflow框架
+</div>
+
+<a id="more"></a>
+<h2 id="张量、计算图、会话"><a href="#张量、计算图、会话" class="headerlink" title="张量、计算图、会话"></a>张量、计算图、会话</h2><p>基于Tensorflow的NN：用张量表示数据，用计算图搭建神经网络，用会话执行计算图，优化线上的权重（参数），得到模型。</p>
+<h3 id="张量-tensor"><a href="#张量-tensor" class="headerlink" title="张量 (tensor)"></a>张量 (tensor)</h3><ul>
+<li>多维数组（列表），可表示 0~n 阶数组</li>
+<li>阶：张量的维数</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>维数</th>
+<th>阶</th>
+<th>名字</th>
+<th style="text-align:center">例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-D</td>
+<td>0</td>
+<td>标量 scalar</td>
+<td style="text-align:center"><code>s = 1</code></td>
+</tr>
+<tr>
+<td>1-D</td>
+<td>1</td>
+<td>向量 vector</td>
+<td style="text-align:center"><code>v = [1, 2, 3]</code></td>
+</tr>
+<tr>
+<td>2-D</td>
+<td>2</td>
+<td>矩阵 matrix</td>
+<td style="text-align:center"><code>m = [[1, 2, 3], [4, 5, 6]]</code></td>
+</tr>
+<tr>
+<td>n-D</td>
+<td>n</td>
+<td>张量 tensor</td>
+<td style="text-align:center">$t= \underbrace{[ [ [ }_{n个}\cdots$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><figcaption><span>python2 </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">a = tf.constant([<span class="number">1.0</span>, <span class="number">2.0</span>])</span><br><span class="line">b = tf.constant([<span class="number">3.0</span>, <span class="number">4.0</span>])</span><br><span class="line">reuslt = a + b</span><br><span class="line"><span class="keyword">print</span> result </span><br><span class="line"></span><br><span class="line"><span class="comment"># Tensor("add:0", shape=(2,), dtype=float32)</span></span><br></pre></td></tr></table></figure>
+<h3 id="计算图-graph"><a href="#计算图-graph" class="headerlink" title="计算图 (graph)"></a>计算图 (graph)</h3><ul>
+<li>搭建神经网络的计算过程，只搭建，不运算<br><img src="https://ws1.sinaimg.cn/large/0065saiygy1g4ss815wf7j30jd07fdg4.jpg" alt="tensenflower005.jpg" title="计算图"></li>
+</ul>
+<h3 id="会话-Session"><a href="#会话-Session" class="headerlink" title="会话(Session)"></a>会话(Session)</h3><ul>
+<li>执行计算图中的节点运算</li>
+</ul>
+<figure class="highlight python"><figcaption><span>python2</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">a = tf.constant([<span class="number">1.0</span>, <span class="number">2.0</span>])</span><br><span class="line">w = tf.constant([<span class="number">3.0</span>, <span class="number">4.0</span>])</span><br><span class="line">y = tf.matmul(x,w)</span><br><span class="line"><span class="keyword">print</span> y</span><br><span class="line"><span class="comment"># Tensor("matmul:0", shape(1,1), dtype=float32)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    <span class="keyword">print</span> sess.run(y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># [[11.]]</span></span><br></pre></td></tr></table></figure>
+<h2 id="神经网络实现过程"><a href="#神经网络实现过程" class="headerlink" title="神经网络实现过程"></a>神经网络实现过程</h2><blockquote>
+<ol>
+<li>准备数据集，提取特征，作为输入喂给神经网络</li>
+<li>搭建NN结构，从输入到输出（先搭建计算图，再用会话执行）<br>（NN前向传播算法 $\Rightarrow$ 计算输出）</li>
+<li>大量特征数据喂给NN，迭代优化NN参数<br>（NN反向传播算法 $\Rightarrow$ 优化参数训练模型）</li>
+<li>使用训练好的模型预测和分类</li>
+</ol>
+</blockquote>
+<h2 id="前向传播"><a href="#前向传播" class="headerlink" title="前向传播"></a>前向传播</h2><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+<li>权重W, 用变量表示，随机给初值<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># W 随机生成方法</span></span><br><span class="line"></span><br><span class="line">w = tf.Variable(tf.random_normal([<span class="number">2</span>,<span class="number">3</span>], stddev = <span class="number">2</span>, mean = <span class="number">0</span>, seed = <span class="number">1</span>))</span><br><span class="line"><span class="comment"># tf.random_normal 正态分布 </span></span><br><span class="line"><span class="comment"># [2,3] 2*3矩阵</span></span><br><span class="line"><span class="comment"># stddev 标准差</span></span><br><span class="line"><span class="comment"># mean 均值</span></span><br><span class="line"><span class="comment"># seed 随机种子 随机种子相同，生成的随机数相同</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>作用</th>
+<th style="text-align:center">示例</th>
+<th style="text-align:center">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tf.truncated_normal()</code></td>
+<td>去过大偏离点的正态分布</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td><code>tf.random_uniform()</code></td>
+<td>均匀分布</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td><code>tf.zeros()</code></td>
+<td>全0 数组</td>
+<td style="text-align:center"><code>tf.zeros([3,2], int32)</code></td>
+<td style="text-align:center"><code>[[0, 0], [0, 0], [0, 0]]</code></td>
+</tr>
+<tr>
+<td><code>tf.ones()</code></td>
+<td>全1 数组</td>
+<td style="text-align:center"><code>tf.ones([3,2], int32)</code></td>
+<td style="text-align:center"><code>[[1, 1], [1, 1], [1, 1]]</code></td>
+</tr>
+<tr>
+<td><code>tf.fill()</code></td>
+<td>全定值数组</td>
+<td style="text-align:center"><code>tf.fill([3,2], 6)</code></td>
+<td style="text-align:center"><code>[[6, 6], [6, 6], [6, 6]]</code></td>
+</tr>
+<tr>
+<td><code>tf.constant()</code></td>
+<td>直接给值</td>
+<td style="text-align:center"><code>tf.constant([3, 2, 1])</code></td>
+<td style="text-align:center"><code>[3, 2, 1]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="前向传播-1"><a href="#前向传播-1" class="headerlink" title="前向传播"></a>前向传播</h3><ul>
+<li>搭建模型，实现推理</li>
+</ul>
+<p><img src="https://ws1.sinaimg.cn/large/0065saiyly1g4tdq6lu5gj30t80bdjsb.jpg" alt="tensenflower006.jpg" title="前向传播示例"></p>
+<ul>
+<li>$X$ 是输入为 $1×2$ 矩阵</li>
+<li>$ w^{(k)}_{i,j} $ 为待优化参数：$ i $ 为前节点编号、 $ j $ 后节点编号、 $ k $ 层数</li>
+</ul>
+<script type="math/tex; mode=display">
+W^{(1)} = 
+\begin{bmatrix}
+    w^{(1)}_{1,1} & w^{(1)}_{1,2} & w^{(1)}_{1,3} \\
+    w^{(1)}_{2,1} & w^{(1)}_{2,2} & w^{(1)}_{2,3} \\
+\end{bmatrix}</script><script type="math/tex; mode=display">a^{(1)} =[a_{11}, a_{12},a_{13}] = XW^{(1)}</script><script type="math/tex; mode=display">
+W^{(2)} = 
+\begin{bmatrix}
+    w^{(2)}_{1,1} \\
+    w^{(2)}_{2,1} \\
+    w^{(2)}_{3,1} \\
+\end{bmatrix}</script><script type="math/tex; mode=display">y=a^{(1)}W^{(1)}</script><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">a = tf.matmul(X, W1)</span><br><span class="line">y = tf.matmul(a, W2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 变量初始化、计算图节点运，算都要用会话（with结构）实现</span></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 所有变量初始化：在sess.run函数中用tf.global_variables_initializer()</span></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    init_op = tf.global_variables_initializer()</span><br><span class="line">    sess.run(init_op)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算图节点运算：在sess.run函数中写入待运算的节点</span></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用tf.placeholder占位，在sess.run函数中用feed_dict喂数据</span></span><br><span class="line"><span class="comment"># 喂一组数据：</span></span><br><span class="line">x = tf.placeholder(tf.float32, shape = (<span class="number">1</span>,<span class="number">2</span>))</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(y, feed_dic = &#123;x: [[<span class="number">0.5</span>, <span class="number">0.6</span>]]&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 喂多组数据：</span></span><br><span class="line">x = tf.placeholder(tf.float32, shape = (<span class="literal">None</span>,<span class="number">2</span>))</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(y, feed_dic = &#123;x: [[<span class="number">0.1</span>, <span class="number">0.2</span>], [<span class="number">0.2</span>, <span class="number">0.3</span>], [<span class="number">0.3</span>, <span class="number">0.4</span>], [<span class="number">0.4</span>, <span class="number">0.5</span>]]&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><figcaption><span>python2  example1</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"><span class="comment"># 两层简单神经网络（全连接）</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义输入和参数</span></span><br><span class="line">x = tf.constant([[<span class="number">0.7</span>, <span class="number">0.5</span>]])</span><br><span class="line">w1 = tf.Variable(tf.random_normal([<span class="number">2</span>, <span class="number">3</span>], stddev = <span class="number">1</span>, seed = <span class="number">1</span>))</span><br><span class="line">w2 = tf.Variable(tf.random_normal([<span class="number">3</span>, <span class="number">1</span>], stddev = <span class="number">1</span>, seed = <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义前向传播</span></span><br><span class="line">a = tf.matmul(x, w1)</span><br><span class="line">y = tf.matmul(a, w2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用会话计算结果</span></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    init_op = tf.global_variables_initializer()</span><br><span class="line">    sess.run(init_op)</span><br><span class="line">    ptint <span class="string">"y is: "</span>,sess.run(y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># y is [[3.0904665]]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><figcaption><span>python2  example2</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"><span class="comment"># 两层简单神经网络（全连接）</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义输入和参数</span></span><br><span class="line"><span class="comment"># 用placeholder 实现输入定义（sess.run 中喂一组数据）</span></span><br><span class="line">x = tf.placeholder(tf.float32, shape = (<span class="number">1</span>, <span class="number">2</span>))</span><br><span class="line">w1 = tf.Variable(tf.random_normal([<span class="number">2</span>, <span class="number">3</span>], stddev = <span class="number">1</span>, seed = <span class="number">1</span>))</span><br><span class="line">w2 = tf.Variable(tf.random_normal([<span class="number">3</span>, <span class="number">1</span>], stddev = <span class="number">1</span>, seed = <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义前向传播</span></span><br><span class="line">a = tf.matmul(x, w1)</span><br><span class="line">y = tf.matmul(a, w2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用会话计算结果</span></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    init_op = tf.global_variables_initializer()</span><br><span class="line">    sess.run(init_op)</span><br><span class="line">    ptint <span class="string">"y is: "</span>,sess.run(y, feed_dict = &#123;x: [[<span class="number">0.7</span>, <span class="number">0.5</span>]]&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># y is [[3.0904665]]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><figcaption><span>python2  example3</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"><span class="comment"># 两层简单神经网络（全连接）</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义输入和参数</span></span><br><span class="line"><span class="comment"># 用placeholder 实现输入定义（sess.run 中喂多组数据）</span></span><br><span class="line">x = tf.placeholder(tf.float32, shape = (<span class="literal">None</span>, <span class="number">2</span>))</span><br><span class="line">w1 = tf.Variable(tf.random_normal([<span class="number">2</span>, <span class="number">3</span>], stddev = <span class="number">1</span>, seed = <span class="number">1</span>))</span><br><span class="line">w2 = tf.Variable(tf.random_normal([<span class="number">3</span>, <span class="number">1</span>], stddev = <span class="number">1</span>, seed = <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义前向传播</span></span><br><span class="line">a = tf.matmul(x, w1)</span><br><span class="line">y = tf.matmul(a, w2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用会话计算结果</span></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    init_op = tf.global_variables_initializer()</span><br><span class="line">    sess.run(init_op)</span><br><span class="line">    ptint <span class="string">"y is: \n"</span>,sess.run(y, feed_dict = &#123;x: [[<span class="number">0.7</span>, <span class="number">0.5</span>], [<span class="number">0.2</span>, <span class="number">0.3</span>], [<span class="number">0.3</span>, <span class="number">0.4</span>], [<span class="number">0.4</span>, <span class="number">0.5</span>]]&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># y is </span></span><br><span class="line"><span class="comment"># [[3.0904665]</span></span><br><span class="line"><span class="comment">#  [1.2236414]</span></span><br><span class="line"><span class="comment">#  [1.72707319]</span></span><br><span class="line"><span class="comment">#  [2.23050475]]</span></span><br></pre></td></tr></table></figure>
+<h2 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h2><p>训练模型参数，在所有参数上用梯度下降，使NN 模型在训练数据上的损失函数最小</p>
+<h3 id="损失函数-loss"><a href="#损失函数-loss" class="headerlink" title="损失函数(loss)"></a>损失函数(loss)</h3><p>预测值与已知答案的差距<br>均方误差MSE </p>
+<script type="math/tex; mode=display">MSE(y\_,y) = \frac{\sum_{i=1}^n(y-y\_)^2}{n}</script><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loss = tf.reduce_mean(tf.square(y_ - y))</span><br></pre></td></tr></table></figure>
+<p>反向传播训练方法：以减小loss 值为优化目标<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">train_step = tf.train.GradientDescentOptimizer(learning_rate).minimize(loss)</span><br><span class="line">train_step = tf.train.MomentumOptimizer(learning_rate, momentum). minimize(loss)</span><br><span class="line">train_step = tf.train.AdamOptimizer(learning_rate).minimize(loss)</span><br></pre></td></tr></table></figure></p>
+<p>学习率：决定参数每次更新幅度 （小一点 0.001）</p>
+<figure class="highlight python"><figcaption><span>python2  example4</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"><span class="comment"># 0 导入模块，生成模拟数据</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">BATCH_SIZE = <span class="number">8</span></span><br><span class="line">seed = <span class="number">23455</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 基于seed 产生随机数</span></span><br><span class="line">rng = np.random.RandomState(seed)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入数据集：随机数返回32行2列的矩阵  表示32组 体重和重量</span></span><br><span class="line">X = rng.rand(<span class="number">32</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入数据标签：从X取出一行，如果和小于1，给Y赋值1； 否则Y赋值0</span></span><br><span class="line">Y = [[int(x0 + x1 &lt; <span class="number">1</span>)] <span class="keyword">for</span> (x0, x1) <span class="keyword">in</span> X]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1 定义神经网络的输入、参数和输出，定义前向传播过程</span></span><br><span class="line">x = tf.placeholder(tf.float32, shape = (<span class="literal">None</span>, <span class="number">2</span>))</span><br><span class="line">y_ = tf.placeholder(tf.float32, shape = (<span class="literal">None</span>, <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">w1 = tf.Variable(tf.random_normal([<span class="number">2</span>, <span class="number">3</span>], stddev = <span class="number">1</span>, seed = <span class="number">1</span>))</span><br><span class="line">w2 = tf.Variable(tf.random_normal([<span class="number">3</span>, <span class="number">1</span>], stddev = <span class="number">1</span>, seed = <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">a = tf.matmul(x, w1)</span><br><span class="line">y = tf.matmul(a, w2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2 定义损失函数及反向传播方法</span></span><br><span class="line">loss = tf.reduce_mean(tf.square(y - y_))</span><br><span class="line">train_stpe = tf.train.GradientDescentOptimizer(<span class="number">0.001</span>).minimize(loss)</span><br><span class="line"><span class="comment"># train_step = tf.train.MomentumOptimizer(0.001, 0.9). minimize(loss)</span></span><br><span class="line"><span class="comment"># train_step = tf.train.AdamOptimizer(0.001).minimize(loss)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3 生成会话，训练STEPS轮</span></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    init_op = tf.global_variables_initializer()</span><br><span class="line">    sess.run(init_op)</span><br><span class="line">    <span class="comment"># 输出未训练的参数值</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"w1:\n"</span>, sess.run(w1)</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"w2:\n"</span>, sess.run(w2)</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"\n"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 训练模型</span></span><br><span class="line">    STEPS = <span class="number">3000</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(STEPS):</span><br><span class="line">        start = (i * BATCH_SIZE) % <span class="number">32</span></span><br><span class="line">        end = start + BATCH_SIZE   </span><br><span class="line">        sess.run(train_step, feed_dict = &#123;x: X[start: end], y_: Y[start, end]&#125;)</span><br><span class="line">        <span class="keyword">if</span> i  % <span class="number">500</span> == <span class="number">0</span>:</span><br><span class="line">            total_loss = sess.run(loss, feed_dict = &#123;x: X, y_: Y&#125;)</span><br><span class="line">            print(<span class="string">"After %d training stap(s), loss on all data is %g"</span> % (i, total_loss))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"\n"</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"w1:\n"</span>, sess.run(w1)</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"w2:\n"</span>, sess.run(w2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># w1:</span></span><br><span class="line"><span class="comment"># [[-0.81131822   1.48459876  0.06532937]</span></span><br><span class="line"><span class="comment">#  [-2.4427042    0.0992484   0.59122431]]</span></span><br><span class="line"><span class="comment"># w2:</span></span><br><span class="line"><span class="comment"># [[-0.81131822]</span></span><br><span class="line"><span class="comment">#  [ 1.48459876]</span></span><br><span class="line"><span class="comment">#  [ 0.06532937]]</span></span><br><span class="line"><span class="comment"># </span></span><br><span class="line"><span class="comment"># After 0 training step(s), loss on all data is 5.13118</span></span><br><span class="line"><span class="comment"># After 500 training step(s), loss on all data is 0.429111</span></span><br><span class="line"><span class="comment"># After 1000 training step(s), loss on all data is 0.409789</span></span><br><span class="line"><span class="comment"># After 1500 training step(s), loss on all data is 0.399923</span></span><br><span class="line"><span class="comment"># After 2000 training step(s), loss on all data is 0.394146</span></span><br><span class="line"><span class="comment"># After 2500 training step(s), loss on all data is 0.390597</span></span><br><span class="line"><span class="comment"># </span></span><br><span class="line"><span class="comment"># w1:</span></span><br><span class="line"><span class="comment"># [[-0.70006633   0.9136318   0.08953571]</span></span><br><span class="line"><span class="comment">#  [-2.3402493    -0.14641267 0.58823055]]</span></span><br><span class="line"><span class="comment"># w2:</span></span><br><span class="line"><span class="comment"># [[-0.06024267]</span></span><br><span class="line"><span class="comment">#  [ 0.91956186]</span></span><br><span class="line"><span class="comment">#  [-0.0682071 ]]</span></span><br></pre></td></tr></table></figure>
+<h2 id="搭建神经网络步骤"><a href="#搭建神经网络步骤" class="headerlink" title="搭建神经网络步骤"></a>搭建神经网络步骤</h2><p>1 准备</p>
+<blockquote>
+<p>import<br>常量定义<br>生成数据集</p>
+</blockquote>
+<p>2 前向传播：定义输入、参数和输出</p>
+<blockquote>
+<p>x  =<br>y_ =</p>
+<p>w1 =<br>w2 =</p>
+<p>a =<br>y = </p>
+</blockquote>
+<p>3 反向传播：定义损失函数、反向传播方法</p>
+<blockquote>
+<p>loss =<br>train_step = </p>
+</blockquote>
+<p>4 生成会话，训练STEPS轮<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    init_op = tf.global_variables_initializer()</span><br><span class="line">    sess.run(init_op)</span><br><span class="line">    STEPS = </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(STEPS):</span><br><span class="line">        start = </span><br><span class="line">        end = </span><br><span class="line">        sess.run(train_step, feed_dict)</span><br></pre></td></tr></table></figure></p>
+<hr>
+      
+    </div>
+
+    
+
+
+
+    
+    
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+    
+    
+      <div class="passage_end"></div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Zhi</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://Smart-zhi.github.io/2019/Tensorflow02/" title="Tensorflow笔记（第二讲）">https://Smart-zhi.github.io/2019/Tensorflow02/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MOOC/" rel="tag"> <i class="fa fa-tag"></i> MOOC</a>
+          
+            <a href="/tags/Tensorflow/" rel="tag"> <i class="fa fa-tag"></i> Tensorflow</a>
+          
+        </div>
+      
+
+      
+      
+      <div id="share-1" class=" share-component socialshar"></div>
+      <script src="/js/src/social-share.min.js"></script>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/Tensorflow01/" rel="next" title="Tensorflow笔记（第一讲）">
+                <i class="fa fa-chevron-left"></i> Tensorflow笔记（第一讲）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/Tensorflow03/" rel="prev" title="神经网络优化">
+                神经网络优化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/1.jpg" alt="Zhi">
+            
+              <p class="site-author-name" itemprop="name">Zhi</p>
+              <div class="site-description motion-element" itemprop="description">学习笔记</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/Smart-zhi" title="GitHub &rarr; https://github.com/Smart-zhi" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:1490295322@qq.com" title="E-Mail &rarr; mailto:1490295322@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          <div id="days" style="text-align : center; color:rgb(161, 102, 171); font-size: 14px;"></div>
+<script>
+function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("12/01/2018 15:00:00");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();
+</script>
+  
+<hr> 
+
+<div id="tag-cloud" style="width:230px; height:240px;text-align:center"> 
+
+</div>
+<script src="/lib/jquery/index.js?v=2.1.3"></script>
+<script src="/js/src/jquery.svg3dtagcloud.min.js"></script>
+<div style="display:none" type="text">
+<a class="tag-link" href="/tags/Java-基础学习/">Java 基础学习</a><a class="tag-link" href="/tags/Linux-学习/">Linux 学习</a><a class="tag-link" href="/tags/MOOC/">MOOC</a><a class="tag-link" href="/tags/MySQL/">MySQL</a><a class="tag-link" href="/tags/Tensorflow/">Tensorflow</a><a class="tag-link" href="/tags/hexo/">hexo</a><a class="tag-link" href="/tags/markdown/">markdown</a><a class="tag-link" href="/tags/关系数据库/">关系数据库</a><a class="tag-link" href="/tags/卷积/">卷积</a><a class="tag-link" href="/tags/图像/">图像</a><a class="tag-link" href="/tags/损失函数/">损失函数</a><a class="tag-link" href="/tags/数据库/">数据库</a><a class="tag-link" href="/tags/文本文件处理/">文本文件处理</a><a class="tag-link" href="/tags/正则化/">正则化</a><a class="tag-link" href="/tags/范式/">范式</a><a class="tag-link" href="/tags/边缘检测/">边缘检测</a></div>
+<script type="text/javascript" charset="utf-8" src="/js/src/mytag_siber.js"></script>
+
+ 
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#张量、计算图、会话"><span class="nav-number">1.</span> <span class="nav-text">张量、计算图、会话</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#张量-tensor"><span class="nav-number">1.1.</span> <span class="nav-text">张量 (tensor)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算图-graph"><span class="nav-number">1.2.</span> <span class="nav-text">计算图 (graph)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#会话-Session"><span class="nav-number">1.3.</span> <span class="nav-text">会话(Session)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#神经网络实现过程"><span class="nav-number">2.</span> <span class="nav-text">神经网络实现过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前向传播"><span class="nav-number">3.</span> <span class="nav-text">前向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">3.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前向传播-1"><span class="nav-number">3.2.</span> <span class="nav-text">前向传播</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反向传播"><span class="nav-number">4.</span> <span class="nav-text">反向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数-loss"><span class="nav-number">4.1.</span> <span class="nav-text">损失函数(loss)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建神经网络步骤"><span class="nav-number">5.</span> <span class="nav-text">搭建神经网络步骤</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhi</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'Ez24jGLqE6WDJGQ76uMiFqWk-gzGzoHsz',
+    appKey: 'PYdwpf5qkk87AWTSWoDmw18O',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+  <!-- 打字礼花及震动特效 -->
+  <script type="text/javascript" src="/js/src/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true; // ture 为启用礼花特效
+    POWERMODE.shake = false; // false 为禁用震动特效
+    document.body.addEventListener('input', POWERMODE);
+  </script> 
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+  <!-- 页面点击小红心/ 文字 -->
+  <script type="text/javascript" src="/js/src/clicklove.js"></script> 
+
+
+</body></html>

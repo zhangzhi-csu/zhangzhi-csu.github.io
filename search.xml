@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2019%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[神经网络优化]]></title>
+    <url>%2F2019%2FTensorflow03%2F</url>
+    <content type="text"><![CDATA[神经网络优化：损失函数、学习率、滑动平均、正则化 损失函数##]]></content>
+      <categories>
+        <category>Tensorflow</category>
+      </categories>
+      <tags>
+        <tag>MOOC</tag>
+        <tag>Tensorflow</tag>
+        <tag>损失函数</tag>
+        <tag>正则化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Tensorflow笔记（第二讲）]]></title>
+    <url>%2F2019%2FTensorflow02%2F</url>
+    <content type="text"><![CDATA[Tensorflow框架 张量、计算图、会话基于Tensorflow的NN：用张量表示数据，用计算图搭建神经网络，用会话执行计算图，优化线上的权重（参数），得到模型。 张量 (tensor) 多维数组（列表），可表示 0~n 阶数组 阶：张量的维数 维数 阶 名字 例子 0-D 0 标量 scalar s = 1 1-D 1 向量 vector v = [1, 2, 3] 2-D 2 矩阵 matrix m = [[1, 2, 3], [4, 5, 6]] n-D n 张量 tensor $t= \underbrace{[ [ [ }_{n个}\cdots$ python2 1234567import tensorflow as tfa = tf.constant([1.0, 2.0])b = tf.constant([3.0, 4.0])reuslt = a + bprint result # Tensor("add:0", shape=(2,), dtype=float32) 计算图 (graph) 搭建神经网络的计算过程，只搭建，不运算 会话(Session) 执行计算图中的节点运算 python21234567891011import tensorflow as tfa = tf.constant([1.0, 2.0])w = tf.constant([3.0, 4.0])y = tf.matmul(x,w)print y# Tensor("matmul:0", shape(1,1), dtype=float32)with tf.Session() as sess: print sess.run(y)# [[11.]] 神经网络实现过程 准备数据集，提取特征，作为输入喂给神经网络 搭建NN结构，从输入到输出（先搭建计算图，再用会话执行）（NN前向传播算法 $\Rightarrow$ 计算输出） 大量特征数据喂给NN，迭代优化NN参数（NN反向传播算法 $\Rightarrow$ 优化参数训练模型） 使用训练好的模型预测和分类 前向传播参数 权重W, 用变量表示，随机给初值12345678# W 随机生成方法w = tf.Variable(tf.random_normal([2,3], stddev = 2, mean = 0, seed = 1))# tf.random_normal 正态分布 # [2,3] 2*3矩阵# stddev 标准差# mean 均值# seed 随机种子 随机种子相同，生成的随机数相同 函数 作用 示例 结果 tf.truncated_normal() 去过大偏离点的正态分布 - - tf.random_uniform() 均匀分布 - - tf.zeros() 全0 数组 tf.zeros([3,2], int32) [[0, 0], [0, 0], [0, 0]] tf.ones() 全1 数组 tf.ones([3,2], int32) [[1, 1], [1, 1], [1, 1]] tf.fill() 全定值数组 tf.fill([3,2], 6) [[6, 6], [6, 6], [6, 6]] tf.constant() 直接给值 tf.constant([3, 2, 1]) [3, 2, 1] 前向传播 搭建模型，实现推理 $X$ 是输入为 $1×2$ 矩阵 $ w^{(k)}_{i,j} $ 为待优化参数：$ i $ 为前节点编号、 $ j $ 后节点编号、 $ k $ 层数 W^{(1)} = \begin{bmatrix} w^{(1)}_{1,1} & w^{(1)}_{1,2} & w^{(1)}_{1,3} \\ w^{(1)}_{2,1} & w^{(1)}_{2,2} & w^{(1)}_{2,3} \\ \end{bmatrix}a^{(1)} =[a_{11}, a_{12},a_{13}] = XW^{(1)} W^{(2)} = \begin{bmatrix} w^{(2)}_{1,1} \\ w^{(2)}_{2,1} \\ w^{(2)}_{3,1} \\ \end{bmatrix}y=a^{(1)}W^{(1)}1234567891011121314151617181920212223242526a = tf.matmul(X, W1)y = tf.matmul(a, W2)# 变量初始化、计算图节点运，算都要用会话（with结构）实现with tf.Session() as sess: sess.run()# 所有变量初始化：在sess.run函数中用tf.global_variables_initializer()with tf.Session() as sess: init_op = tf.global_variables_initializer() sess.run(init_op)# 计算图节点运算：在sess.run函数中写入待运算的节点with tf.Session() as sess: sess.run(y)# 用tf.placeholder占位，在sess.run函数中用feed_dict喂数据# 喂一组数据：x = tf.placeholder(tf.float32, shape = (1,2))with tf.Session() as sess: sess.run(y, feed_dic = &#123;x: [[0.5, 0.6]]&#125;)# 喂多组数据：x = tf.placeholder(tf.float32, shape = (None,2))with tf.Session() as sess: sess.run(y, feed_dic = &#123;x: [[0.1, 0.2], [0.2, 0.3], [0.3, 0.4], [0.4, 0.5]]&#125;) python2 example1123456789101112131415161718192021# coding:utf-8# 两层简单神经网络（全连接）import tensorflow as tf# 定义输入和参数x = tf.constant([[0.7, 0.5]])w1 = tf.Variable(tf.random_normal([2, 3], stddev = 1, seed = 1))w2 = tf.Variable(tf.random_normal([3, 1], stddev = 1, seed = 1))# 定义前向传播a = tf.matmul(x, w1)y = tf.matmul(a, w2)# 用会话计算结果with tf.Session() as sess: init_op = tf.global_variables_initializer() sess.run(init_op) ptint "y is: ",sess.run(y)# y is [[3.0904665]] python2 example212345678910111213141516171819202122# coding:utf-8# 两层简单神经网络（全连接）import tensorflow as tf# 定义输入和参数# 用placeholder 实现输入定义（sess.run 中喂一组数据）x = tf.placeholder(tf.float32, shape = (1, 2))w1 = tf.Variable(tf.random_normal([2, 3], stddev = 1, seed = 1))w2 = tf.Variable(tf.random_normal([3, 1], stddev = 1, seed = 1))# 定义前向传播a = tf.matmul(x, w1)y = tf.matmul(a, w2)# 用会话计算结果with tf.Session() as sess: init_op = tf.global_variables_initializer() sess.run(init_op) ptint "y is: ",sess.run(y, feed_dict = &#123;x: [[0.7, 0.5]]&#125;)# y is [[3.0904665]] python2 example31234567891011121314151617181920212223242526# coding:utf-8# 两层简单神经网络（全连接）import tensorflow as tf# 定义输入和参数# 用placeholder 实现输入定义（sess.run 中喂多组数据）x = tf.placeholder(tf.float32, shape = (None, 2))w1 = tf.Variable(tf.random_normal([2, 3], stddev = 1, seed = 1))w2 = tf.Variable(tf.random_normal([3, 1], stddev = 1, seed = 1))# 定义前向传播a = tf.matmul(x, w1)y = tf.matmul(a, w2)# 用会话计算结果with tf.Session() as sess: init_op = tf.global_variables_initializer() sess.run(init_op) ptint "y is: \n",sess.run(y, feed_dict = &#123;x: [[0.7, 0.5], [0.2, 0.3], [0.3, 0.4], [0.4, 0.5]]&#125;)# y is # [[3.0904665]# [1.2236414]# [1.72707319]# [2.23050475]] 反向传播训练模型参数，在所有参数上用梯度下降，使NN 模型在训练数据上的损失函数最小 损失函数(loss)预测值与已知答案的差距均方误差MSE MSE(y\_,y) = \frac{\sum_{i=1}^n(y-y\_)^2}{n}1loss = tf.reduce_mean(tf.square(y_ - y)) 反向传播训练方法：以减小loss 值为优化目标123train_step = tf.train.GradientDescentOptimizer(learning_rate).minimize(loss)train_step = tf.train.MomentumOptimizer(learning_rate, momentum). minimize(loss)train_step = tf.train.AdamOptimizer(learning_rate).minimize(loss) 学习率：决定参数每次更新幅度 （小一点 0.001） python2 example41234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980# coding:utf-8# 0 导入模块，生成模拟数据import tensorflow as tfimport numpy as npBATCH_SIZE = 8seed = 23455# 基于seed 产生随机数rng = np.random.RandomState(seed)# 输入数据集：随机数返回32行2列的矩阵 表示32组 体重和重量X = rng.rand(32, 2)# 输入数据标签：从X取出一行，如果和小于1，给Y赋值1； 否则Y赋值0Y = [[int(x0 + x1 &lt; 1)] for (x0, x1) in X]# 1 定义神经网络的输入、参数和输出，定义前向传播过程x = tf.placeholder(tf.float32, shape = (None, 2))y_ = tf.placeholder(tf.float32, shape = (None, 1))w1 = tf.Variable(tf.random_normal([2, 3], stddev = 1, seed = 1))w2 = tf.Variable(tf.random_normal([3, 1], stddev = 1, seed = 1))a = tf.matmul(x, w1)y = tf.matmul(a, w2)# 2 定义损失函数及反向传播方法loss = tf.reduce_mean(tf.square(y - y_))train_stpe = tf.train.GradientDescentOptimizer(0.001).minimize(loss)# train_step = tf.train.MomentumOptimizer(0.001, 0.9). minimize(loss)# train_step = tf.train.AdamOptimizer(0.001).minimize(loss)# 3 生成会话，训练STEPS轮with tf.Session() as sess: init_op = tf.global_variables_initializer() sess.run(init_op) # 输出未训练的参数值 print "w1:\n", sess.run(w1) print "w2:\n", sess.run(w2) print "\n" # 训练模型 STEPS = 3000 for i in range(STEPS): start = (i * BATCH_SIZE) % 32 end = start + BATCH_SIZE sess.run(train_step, feed_dict = &#123;x: X[start: end], y_: Y[start, end]&#125;) if i % 500 == 0: total_loss = sess.run(loss, feed_dict = &#123;x: X, y_: Y&#125;) print("After %d training stap(s), loss on all data is %g" % (i, total_loss)) print "\n" print "w1:\n", sess.run(w1) print "w2:\n", sess.run(w2)# w1:# [[-0.81131822 1.48459876 0.06532937]# [-2.4427042 0.0992484 0.59122431]]# w2:# [[-0.81131822]# [ 1.48459876]# [ 0.06532937]]# # After 0 training step(s), loss on all data is 5.13118# After 500 training step(s), loss on all data is 0.429111# After 1000 training step(s), loss on all data is 0.409789# After 1500 training step(s), loss on all data is 0.399923# After 2000 training step(s), loss on all data is 0.394146# After 2500 training step(s), loss on all data is 0.390597# # w1:# [[-0.70006633 0.9136318 0.08953571]# [-2.3402493 -0.14641267 0.58823055]]# w2:# [[-0.06024267]# [ 0.91956186]# [-0.0682071 ]] 搭建神经网络步骤1 准备 import常量定义生成数据集 2 前向传播：定义输入、参数和输出 x =y_ = w1 =w2 = a =y = 3 反向传播：定义损失函数、反向传播方法 loss =train_step = 4 生成会话，训练STEPS轮12345678with tf.Session() as sess: init_op = tf.global_variables_initializer() sess.run(init_op) STEPS = for i in range(STEPS): start = end = sess.run(train_step, feed_dict)]]></content>
+      <categories>
+        <category>Tensorflow</category>
+      </categories>
+      <tags>
+        <tag>MOOC</tag>
+        <tag>Tensorflow</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Tensorflow笔记（第一讲）]]></title>
+    <url>%2F2019%2FTensorflow01%2F</url>
+    <content type="text"><![CDATA[人工智能概述 人工智能 vs 机器学习 vs 深度学习人工智能，机器模拟人的意识和思维；机器学习，实现人工智能的一种方法，是人工智能的子集。深度学习，是深层次神经网络，是机器学习的一种实现方法，是机器学习的子集。 总结机器学习的定义：如果一个程序可在任务T上，随经验E的增加，效果P随之增加，则这个程序可以从经验中学习。]]></content>
+      <categories>
+        <category>Tensorflow</category>
+      </categories>
+      <tags>
+        <tag>MOOC</tag>
+        <tag>Tensorflow</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[边缘检测]]></title>
+    <url>%2F2019%2FCNN01%2F</url>
+    <content type="text"><![CDATA[卷积计算方法卷积计算方法示意 卷积计算示例 \begin{bmatrix} 3&3&2&1&0\\ 0&0&1&3&1\\ 3&1&2&2&3\\ 2&0&0&2&2\\ 2&0&0&0&1\\ \end{bmatrix} * \begin{bmatrix} 0&1&2\\ 2&2&0\\ 0&1&2\\ \end{bmatrix} = \begin{bmatrix} 12&12&17\\ 10&17&19\\ 9&6&14\\ \end{bmatrix} 边缘检测垂直边缘检测 \begin{bmatrix} 10&10&10&0&0&0\\ 10&10&10&0&0&0\\ 10&10&10&0&0&0\\ 10&10&10&0&0&0\\ 10&10&10&0&0&0\\ 10&10&10&0&0&0\\ \end{bmatrix} * \begin{bmatrix} 1&0&-1\\ 1&0&-1\\ 1&0&-1\\ \end{bmatrix} = \begin{bmatrix} 0&30&30&0\\ 0&30&30&0\\ 0&30&30&0\\ 0&30&30&0\\ \end{bmatrix} 边缘过渡示例 取绝对值可以忽略过度不取绝对值，可以得到过度信息 水平检测 滤波器种类\begin{bmatrix} 1&0&-1\\ 2&0&-2\\ 1&0&-1\\ \end{bmatrix}\ \ \ \ \ \ \ \begin{bmatrix} 3&0&-3\\ 10&0&-10\\ 3&0&-3\\ \end{bmatrix}\ \ \ \ \ \ \ \begin{bmatrix} \omega _1&\omega _2&\omega _3\\ \omega _4&\omega _5&\omega _6\\ \omega _7&\omega _8&\omega _9\\ \end{bmatrix} sobe fitter &emsp; &emsp; &emsp; &emsp; scharr fitter &emsp; &emsp; &emsp; &emsp; 训练滤波器]]></content>
+      <categories>
+        <category>CNN</category>
+      </categories>
+      <tags>
+        <tag>图像</tag>
+        <tag>边缘检测</tag>
+        <tag>卷积</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[MySQL 基础]]></title>
+    <url>%2F2019%2Fmysql002%2F</url>
+    <content type="text"><![CDATA[登陆、启动 MySQL 登陆 MySQL 数据库1mysql -h hostname -u username -p 在上述命令中，mysql为登录命令，-h后面的参数是服务器的主机地址，-u后面的参数是登录数据库的用户名，-p后面是登录密码 启动 MySQL 服务启动 MySQL 服务1net start mysql ⋈ ⋉ ⋊停止 MySQL 服务1net stop mysql]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数据库入门]]></title>
+    <url>%2F2019%2Fmysql001%2F</url>
+    <content type="text"><![CDATA[数据库基本概念、数据库模型概念、关系数据库 DBMS 数据定义功能 数据操纵功能 数据库的运行管理功能 数据组织、存储与管理功能 数据库的保护功能 数据库的维护功能 数据库接口功能 数据库模型概念数据模型（Data Model）它是数据特征的抽象。数据模型是数据库系统的核心与基础，它从抽象层次上描述了系统的静态特征、动态行为和约束条件，为数据库系统的信息表示与操作提供了一个抽象的框架。 数据结构：主要描述数据的类型、内容、性质以及数据间的联系等，是对系统静态特征的描述。 数据操作：主要描述在相应的数据结构上的操作类型和操作方式，是对系统动态特征的描述。 数据的约束条件：主要描述数据结构内数据间的语法、词义联系、他们之间的制约和依存关系，以及数据动态变化的规则，以保证数据的正确、有效和相容。 概念模型表示方法概念模型的表示方法有很多，但最常用的方法为实体-联系方法（Entity-Relationship Approach），简称E-R方法该方法用E-R图（Entity-Relationship Diagram，实体-联系图）来描述现实世界的概念模型，E-R方法也称为E-R模型（Entity-Relationship Model）。 实体之间的联系：一对一、一对多、多对多 如果联系也具有属性，则这些属性也要用无向边与该联系连接起来例如学生与课程之间存在学习的联系，学习就有“成绩”这一属性。 关系数据库规范化范式是符合某一种级别的关系模式的集合，是衡量关系模式规范化程度的标准，符合标准的关系才是规范化的。范式可以分为多个等级：第一范式（1NF）、第二范式（2NF）、第三范式（3NF）、BC范式（BCNF）、第四范式等。 第一范式如果关系模式R中所有的属性都是不可分解的，则称该关系模式R满足第一范式（First Normal Form），简称1NF，记作R$\in$1NF。 第二范式如果一个关系模式R$\in$1NF，且R中的每一个非主属性都完全丽数依赖于码，则称该关系模式R满足第二范式（Second Normal Form），简称2NF，记作R$\in$2NF。 例如，学生成绩表（学号，课程号，姓名，课程名，成绩）中，“学号”和“课程号”字段组成主键，“成绩”完全依赖于该主键，但是“姓名”和“课程名”都只是部分依赖于主键，“姓名”可以由“学号”确定，并不需要“课程号”，而“课程名”是由“课程号”决定并不依赖于“学号”。所以该关系表就不符合2NF。 对于上面的这种关系，可以将其分解为三张表：(1) 学生信息表（学号，姓名）(2) 课程信息表（课程号，课程名）(3) 成绩表（学号，课程号，成绩） 第三范式如果一个关系模式R$\in$2NF，且R中的每个非主属性都不传递函数依赖于码，则称该关系模式R满足第三范式（Third Normal Form），简称3NF，记作R$\in$3NF。可以证明，若R$\in$3NF，则每一个非主属性既不部分函数依赖于码，也不传递依赖于码。 所谓传递函数依赖是指：在一个数据表中存在关键字段A决定非关键字段B，而B又决定非关键字段C，则称C传递函数依赖于A，并称该表中存在传递依赖关系。 数据库设计]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+        <tag>MySQL</tag>
+        <tag>范式</tag>
+        <tag>关系数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[linux02]]></title>
+    <url>%2F2019%2Flinux02%2F</url>
+    <content type="text"><![CDATA[正则表达式 元字符 6个元字符 . * [ \ ^ $ 其他字符与其自身匹配 转义 用 \ 转义元字符 单字符正则表达式 转义字符 \. \* \[ \\ \^ \$ 原点 . 匹配任何一个字符]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux 文本文件处理]]></title>
+    <url>%2F2019%2Flinux01%2F</url>
+    <content type="text"><![CDATA[Linux 文本文件处理 读取文件内容 more/less 逐屏显示文件1234more test.txt # one filemore *.txt # many txt file ls -l | more # no fileless test.txt more 输入 动作 空格 下一屏 回车 上滚一行 q 退出 /pattren 搜索指定模式的字符串，模式描述用正则表达式 / 继续查找指定模式的字符串 h 帮助信息 Ctrl-L 屏幕刷新 less 回退浏览的功能更强 可直接使键盘的上下箭头键，或者j,k，类似vi的光标定位键，以及PgUp， PgDn，Home，End键 cat/od 列出文件内容 cat concatenate:串结，文本格式打印 （选项-n：行号）od octal dump逐字节打印（-c, -t c, -t x1，-t d1, -t u1选项） 123456cat -n 20 test.txtcat &gt;test1.txt # 从stdin获取数据，直到ctrl-dod -t x1 a.dat # 十六进制打印od -t xi a.dat | moreod -c b.file # 逐字打印，遇到不可打印字符，打印编码 head/tail 显示文件的头部或者尾部 默认只选择10行，-n选项可以选择行数 12345678head -n 15 test.txthead -n 15 test1.txt test2.txt |more # 显示2个文件各自前15行，共30行tail -n 15 test.txthead -n -20 test.txt # 去除文件尾部20行，其余算头tail -n +20 test.txt # 去除文件头部20行，其余算尾tail -f debug.txt # 实时打印文件尾部被追加的内容 tee 三通 将从标准输入stdin得到的数据抄送到标准输出stdout显示，同时存入磁盘文件中 1234567891011cat a.shecho aecho bsh a.sh | tee a.logabcat a.logab wc 字数统计 列出文件中一共有多少行，有多少个单词，多少字符当指定的文件数大于1时，最后还列出一个合计常用选项-l：只列出行计数 12345678910111213wc test.txt # 1 个文件wc test1.txt test2.txt # 多个文件# 输出# 6 7 13 test1.txt# 6 7 13 test2.txt# 12 14 26 totalwc -l test1.txt test2.txt# 输出# 6 test1.txt# 6 test2.txt# 12 total sort 对文件内容排序 -n选项(Numberic):对于数字按照算术值大小排序，而不是按照字符串比较 规则，例如123与67可以选择行中某一部分作为排序关键字选择升序或降序字符串比较时对字母是否区分大小写内排序外排序等算法参数选择（当数据量较大时，性能调优） 1sort text1.txt &gt; text3.txt tr 翻译字符 tr string1 string2把标准输入拷贝到标准输出，string1中出现的字符替换为string2中的对应字符 12345678910111213cat test1.txt# 输出# a# b# c# dcat test1.txt |tr '[abc]' '[XYZ]'# 输出# X# Y# Z# d nuiq 筛选文件中重复行uniq optionsuniq options input-fileuniq options input-file output-file 重复的行：紧邻的两行内容相同选项-u （uniqe）只保留没有重复的行-d （duplicated）只保留有重复的行（但只打印一次） 没有以上两个选项，打印没有重复的行和有重复的行（但只打印一次)-c （count）计数同样的行出现几次]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>Linux 学习</tag>
+        <tag>文本文件处理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java Day2]]></title>
+    <url>%2F2019%2Fjava02%2F</url>
+    <content type="text"><![CDATA[java数组 数组 数组是多个相同类型数据的组合，实现对这些数据的统一管理 数组属引用类型，数组型数据是对象（Object），数组中的每个元素相当于该对象的成员变量 数组中的元素可以是任何数据类型，包括基本类型和引用类型 一维数组 定义：数组是多个相同类型数据的组合，实现对这些数据的统一管理 一维数组声明 12345// type name []; int myarray1 [];// type[] name; 推荐int[] myarray2; 创建数组： new 12String[] names = new String[5];int[] scores = new int[10]; type[] varName = null; varName = new type[length]; type[] varName = new type[length]; 引用元素 通过下标， 下标从0 开始。 通过数组的length属性，获得数组长度 一旦创建，就被隐式初始化 数组元素类型 初始值 byte、short、int 0 long 0L float 0.0F double 0.0D char ‘\u0000’(空) boolean False 引用类型 Null 数组初始化 动态初始化：先声明，再创建，后用for赋值 静态初始化：创建同时赋值int[] k = new int[]{1, 2, 3}; ##]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java 基础学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Markdown写作模板]]></title>
+    <url>%2F2019%2Fmarkdown01%2F</url>
+    <content type="text"><![CDATA[整理的markdown语法，以及在hexo中的特殊渲染 markdown 在hexo 中的渲染 1主题自带样式 文本居中引用效果：人生乃是一面镜子，从镜子里认识自己，我要称之为头等大事，也只是我们追求的目的！ 代码：123456&#123;% cq %&#125;人生乃是一面镜子，从镜子里认识自己，我要称之为头等大事， 也只是我们追求的目的！&#123;% endcq %&#125; 主题自带样式 note 标签default 1&lt;div class="note default"&gt;&lt;p&gt;default&lt;/p&gt;&lt;/div&gt; primary 1&lt;div class="note primary"&gt;&lt;p&gt;primary&lt;/p&gt;&lt;/div&gt; success 1&lt;div class="note success"&gt;&lt;p&gt;success&lt;/p&gt;&lt;/div&gt; info 1&lt;div class="note info"&gt;&lt;p&gt;info&lt;/p&gt;&lt;/div&gt; warning 1&lt;div class="note warning"&gt;&lt;p&gt;warning&lt;/p&gt;&lt;/div&gt; danger 1&lt;div class="note danger"&gt;&lt;p&gt;danger&lt;/p&gt;&lt;/div&gt; danger no-icon 1&lt;div class="note danger no-icon"&gt;&lt;p&gt;danger no-icon&lt;/p&gt;&lt;/div&gt; 主题自带样式 label 标签 default 1&#123;% label default@default %&#125; primary 1&#123;% label primary@primary %&#125; success 1&#123;% label success@success %&#125; info 1&#123;% label info@info %&#125; warning 1&#123;% label warning@warning %&#125; danger 1&#123;% label danger@danger %&#125; 主题自带样式 tabs 标签效果选项卡 1选项卡 2选项卡 3这是选项卡 1 呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈……这是选项卡 2这是选项卡 3 哇，你找到我了！φ(≧ω≦*)♪～ 源码 1234567891011&#123;% tabs 选项卡, 2 %&#125;&lt;!-- tab --&gt;**这是选项卡 1** 呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈……&lt;!-- endtab --&gt;&lt;!-- tab --&gt;**这是选项卡 2**&lt;!-- endtab --&gt;&lt;!-- tab --&gt;**这是选项卡 3** 哇，你找到我了！φ(≧ω≦*)♪～&lt;!-- endtab --&gt;&#123;% endtabs %&#125; 主题自带样式 按钮源码 1&#123;% btn https://www.baidu.com, 点击下载百度, download fa-lg fa-fw %&#125; 效果点击下载百度 自定义样式 引用首先由于是自定义的样式，故要自己将 CSS 代码加到custom.styl中，下文的自定义样式都是如此。为什么可以自定义呢？如果你是一个和我一样的小白，可以点击这里了解了解 CSS 中id和class的知识。 需加入custom.styl的代码：123456789// 自定义的引用样式blockquote.question &#123; color: #555; border-left: 4px solid rgb(16, 152, 173); background-color: rgb(227, 242, 253); border-top-right-radius: 3px; border-bottom-right-radius: 3px; margin-bottom: 20px;&#125; 文字颜色改color的值 背景色改background-color的值 边框颜色和粗细改border-left的值 markdown 格式标题1234# 一级标题## 二级标题...###### 六级标题 效果： 字体12345**粗体** *斜体* ***斜体加粗*** ~~删除线~~ &lt;font color =&quot;red&quot;&gt;示例md代码:&lt;/font&gt; 粗体 斜体 斜体加粗 删除线 示例md代码: 引用12&gt; 引用1&gt;&gt; 引用2 效果： 引用1 引用2 分割线1234------****** 图片语法：1234567![alt](url &apos;&apos;title&apos;&apos;)alt表示图片显示失败时的替换文本title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加例如：![blockchain](https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=702257389,1274025419&amp;fm=27&amp;gp=0.jpg &quot;区块链&quot;) 超链接语法：1234567[超链接名](超链接地址 &quot;超链接title&quot;)title可加可不加例如：[简书](http://jianshu.com)[百度](http://baidu.com &quot;到百度&quot;) 简书百度 html语法：1234&lt;a href=&quot;超链接地址&quot; target=&quot;_blank&quot;&gt;超链接名&lt;/a&gt;例如：&lt;a href=&quot;https://www.jianshu.com&quot; target=&quot;_blank&quot;&gt;简书&lt;/a&gt; 简书 无序列表语法：12345- 列表内容+ 列表内容* 列表内容注意：- + * 跟内容之间都要有一个空格 效果： 列表1- 列表2- 列表1+ 列表2+ 有序列表语法：1234567数字加点1.列表内容2.列表内容3.列表内容注意：序号跟内容之间要有空格 例如： 列表内容 列表内容 列表内容 列表嵌套语法：1上一级和下一级之间敲三个空格即可 例如：123456- 一级无序 - 二级无序 - 二级无序- 一级无序 1. 二级有序 2. 二级有序 表格语法：1234567891011表头|表头|表头---|:--:|---:内容|内容|内容内容|内容|内容第二行分割表头和内容。- 有一个就行，为了对齐，多加了几个文字默认居左-两边加：表示文字居中-右边加：表示文字居右注：原生的语法两边都要用 | 包起来。此处省略 在线生成HTML代码 Tables Generator 例如：12345姓名|技能|排行--|:--:|--:刘备|哭|大哥关羽|打|二哥张飞|骂|三弟 代码语法：12单行代码:`int a;` int a; 代码块1234int a = 0;for (int i = 0; i &lt; 5; i++)&#123; a = a + 1;&#125; 流程图 6种类型 含义 start 启动 end 结束 operation 程序 subroutine 子程序 condition 条件 inputoutput 输出 形参 实参 含义 -&gt; -&gt; 连接 condition c1 条件 (布尔值,方向) (yes,right) 如果满足向右连接，4种方向：right ，left，up ，down 默认为：down 形参 实参 含义 tag st 标签 (可以自定义) =&gt; =&gt; 赋值 type start 类型 (6种类型) content 开始 描述内容 (可以自定义) :&gt;url http://www.baidu.com[blank] 链接与跳转方式 兼容性很差 符号 含义 - 实线 &gt; 实心箭头 — 虚线 &gt;&gt; 空心箭头 Latex数学公式12345678910111213141516行内公式使用两个”$”符号引用公式$公式$行间公式使用两对“$$”符号引用公式：$$公式$$简单的规则：（1）空格：LaTeX中空格用来隔开单词(英语一类字母文字)，多个空格等效于一个空格；对中文没有作用。 （2）换行：用控制命令“\”,或“ \newline”. （3）分段：用控制命令“\par” 或空出一行。 （4）换页：用控制命令“\newpage”或“\clearpage” （5）特殊控制字符：#，$, %, &amp;, - ,&#123;, &#125;, ^, ~ \# \$ \% \&amp; \- \&#123; \&#125; \^&#123;&#125; \~&#123;&#125; $\backslash$表示“ \”.。 常见数学符号 指数和下标可以用^和_后加相应字符来实现。比如1234$a_&#123;1&#125;$ \qquad $x^&#123;2&#125;$ \qquad$e^&#123;-\alpha t&#125;$ \qquad$a^&#123;3&#125;_&#123;ij&#125;$\\$e^&#123;x^2&#125; \neq &#123;e^x&#125;^2$ a_{1}x^{2}e^{-\alpha t}a^{3}_{ij} 平方根1234$$\sqrt&#123;x&#125;$$$$\sqrt&#123; x^&#123;2&#125;+\sqrt&#123;y&#125; &#125;$$$$\sqrt[3]&#123;2&#125;$$$$\surd[x^2 + y^2]$$ \sqrt{x}\sqrt{ x^{2}+\sqrt{y} }\sqrt[3]{2}\surd[x^2 + y^2] 命令\overline 和\underline 在表达式的上、下方画出水平线。比如12$$\overline&#123;m+n&#125;$$$$\underline&#123;m+n&#125;$$ \overline{m+n}\underline{m+n} 命令\overbrace 和\underbrace 在表达式的上、下方给出一水平的大括号。1$$\underbrace&#123; a+b+\cdots+z &#125;_&#123;26&#125;$$ \underbrace{ a+b+\cdots+z }_{26} 其他$\frac{1+x}{2^x}$ \sum_{i=0}N\int_{a}^{b}g(t,i)\text{d}t\begin{matrix} 1&0&0\\ 0&1&0\\ 0&0&1\\ \end{matrix}\begin{bmatrix} {a_{11}}&{a_{12}}&{\cdots}&{a_{1n}}\\ {a_{21}}&{a_{22}}&{\cdots}&{a_{2n}}\\ {\vdots}&{\vdots}&{\ddots}&{\vdots}\\ {a_{m1}}&{a_{m2}}&{\cdots}&{a_{mn}}\\ \end{bmatrix}\begin{cases} a_1x+b_1y+c_1z=d_1\\ a_2x+b_2y+c_2z=d_2\\ a_3x+b_3y+c_3z=d_3\\ \end{cases}\begin{aligned} f_Y(y) & = f_X[h(y)]|h'(y)| \\[2ex] & = f_X[h(y)]h'(y) \\[2ex] & = \frac{1}{\theta}e^{-\frac{x}{\theta}}[\frac{dx}{dy}(-\frac{\theta}{ln(1-y)})] \\[2ex] & = \frac{1}{\theta}e^{-\frac{-\frac{\theta}{ln(1-y)}}{\theta}}\frac{\theta}{1-y} \\[2ex] & = \frac{1}{\theta}e^{ln(1-y)}\frac{\theta}{1-y} \\[2ex] & = \frac{1-y}{\theta}\frac{\theta}{1-y} \\[2ex] & = 1 \end{aligned}锚点123456789[锚点][锚点的定义]的 目标内容中不能有大写字母和空格，所以如果锚点目标的目标内容中有大写字母或空格，则需要在定义锚点中的目标内容时，把大写字母改成小写字母，把空格改成 -；[锚点][锚点的定义]的 目标内容 中不能含有以下字符：半角点(即英文中的句号).[回到顶部](##markdown_在hexo_中的渲染)[数学公式](#latex数学公式) 回到顶部数学公式 diff语法12+ new code- old code 自动邮箱连接1&lt;xxx@outlook.com&gt; &#120;&#x78;&#120;&#x40;&#111;&#117;&#116;&#x6c;&#111;&#111;&#x6b;&#x2e;&#x63;&#x6f;&#x6d; 脚注 2代码：效果： st=>start: Start|past:>http://www.google.com[blank] e=>end: End:>http://www.google.com op1=>operation: My Operation|past op2=>operation: Stuff|current sub1=>subroutine: My Subroutine|invalid cond=>condition: Yes or No?|approved:>http://www.google.com c2=>condition: Good idea|rejected io=>inputoutput: catch something...|request st->op1(right)->cond cond(yes, right)->c2 cond(no)->sub1(left)->op1 c2(yes)->io->e c2(no)->op2->e{"theme":"simple","scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12} var code = document.getElementById("flowchart-0-code").value; var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value)); var diagram = flowchart.parse(code); diagram.drawSVG("flowchart-0", options); 起床->吃饭: 稀饭油条 吃饭->上班: 不要迟到了 上班->午餐: 吃撑了 上班->下班: Note right of 下班: 下班了 下班->回家: Note right of 回家: 到家了 回家-->>起床: Note left of 起床: 新的一天{"theme":"simple","scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12} var code = document.getElementById("sequence-0-code").value; var options = JSON.parse(decodeURIComponent(document.getElementById("sequence-0-options").value)); var diagram = Diagram.parse(code); diagram.drawSVG("sequence-0", options);Alice->Bob: Hello Bob, how are you? Note right of Bob: Bob thinks Bob-->Alice: I am good thanks!{"theme":"simple","scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12} var code = document.getElementById("sequence-1-code").value; var options = JSON.parse(decodeURIComponent(document.getElementById("sequence-1-options").value)); var diagram = Diagram.parse(code); diagram.drawSVG("sequence-1", options);]]></content>
+      <categories>
+        <category>markdown</category>
+      </categories>
+      <tags>
+        <tag>markdown</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+</search>

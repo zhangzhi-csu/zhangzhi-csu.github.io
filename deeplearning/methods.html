@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>§ 3 Methods | Note: deeplearning</title>
+  <meta name="description" content="xxx" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="§ 3 Methods | Note: deeplearning" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://smart-zhi.github.io/deeplearning/index.html" />
+  <meta property="og:image" content="https://smart-zhi.github.io/deeplearning/index.htmlcover.jpeg" />
+  <meta property="og:description" content="xxx" />
+  <meta name="github-repo" content="Smart-zhi/somebook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="§ 3 Methods | Note: deeplearning" />
+  
+  <meta name="twitter:description" content="xxx" />
+  <meta name="twitter:image" content="https://smart-zhi.github.io/deeplearning/index.htmlcover.jpeg" />
+
+<meta name="author" content="ZHI" />
+
+
+<meta name="date" content="2020-05-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+<link rel="prev" href="introduction.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="https://smart-zhi.github.io/">Back To Home</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 1</a></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#one"><i class="fa fa-check"></i><b>3.1</b> one</a></li>
+<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#two"><i class="fa fa-check"></i><b>3.2</b> two</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Note: deeplearning</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="methods" class="section level1" number="3">
+<h1><span class="header-section-number">§ 3</span> Methods</h1>
+<p>We describe our methods in this chapter.</p>
+<p><em>one</em></p>
+<p><em>two</em></p>
+<p><strong>three</strong></p>
+<p><strong>four</strong></p>
+<p>H<sub>2</sub>SO<sub>4</sub></p>
+<p>Fe<sup>2+</sup></p>
+<p><code>code</code></p>
+<p><span class="smallcaps">Small Caps</span></p>
+<p><a href="http://www.baidu.com">百度</a></p>
+<div id="one" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> one</h2>
+<ul>
+<li>ha</li>
+<li>xi</li>
+<li>hah
+<ul>
+<li>fdsf</li>
+<li>dsf</li>
+</ul></li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>a</li>
+<li>s</li>
+<li>f</li>
+</ol>
+<blockquote>
+<p>"zhe shi yi zhi shen me bi</p>
+<p>zhe sh yi zhi shen qi de bi"</p>
+<p>np</p>
+</blockquote>
+<blockquote>
+<p>“I thoroughly disapprove of duels. If a man should challenge me,
+I would take him kindly and forgivingly by the hand and lead him
+to a quiet place and kill him.”</p>
+<p>— Mark Twain</p>
+</blockquote>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="methods.html#cb3-1"></a><span class="dt">int</span> a;</span></code></pre></div>
+<p>Or indent by four spaces<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>:</p>
+<pre><code>This text is displayed verbatim / preformatted</code></pre>
+</div>
+<div id="two" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> two</h2>
+<p><span class="math display">\[ f(k)={n \choose k}p^k(1-p)^{n-k}  \]</span></p>
+<p><span class="math display">\[\begin{array}\\
+x_{1} &amp; x_{2}\\
+x_{3} &amp; x_{4}\\
+\end{array} \]</span></p>
+<p><span class="math display">\[X=\begin{bmatrix} 1 &amp; 2\\
+3 &amp; 4\\
+\end{bmatrix}\]</span></p>
+<p><span class="math display">\[
+\begin{pmatrix} \alpha &amp; \beta\\
+\gamma &amp; \delta\\
+\end{pmatrix}
+\]</span></p>
+<p><span class="math display">\[
+\begin{vmatrix} a &amp; b\\
+c &amp; d \\
+\end{vmatrix}=ad-bc
+\]</span></p>
+<p><span class="math display" id="eq:e1">\[\begin{equation} 
+  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
+  \tag{3.1}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:e2">\[\begin{equation} 
+  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
+  \tag{3.2}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:e3">\[\begin{equation} 
+  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
+  \tag{3.3}
+\end{equation}\]</span></p>
+<p>see <a href="methods.html#eq:e3">(3.3)</a></p>
+<p><span class="math display" id="eq:align" id="eq:align1">\[\begin{align} \
+g(X_{n}) &amp;= g(\theta)+g&#39;({\tilde{\theta}})(X_{n}-\theta) \notag \\
+g(X_{n}) &amp;= g(\theta)+g&#39;({\tilde{\theta}})(X_{n}-\theta) \tag{3.4}\\
+\sqrt{n}[g(X_{n})-g(\theta)] &amp;= g&#39;\left({\tilde{\theta}}\right) \sqrt{n}[X_{n}-\theta ] \tag{3.5}
+\end{align}\]</span></p>
+<p><span class="math display" id="eq:var-beta">\[\begin{equation} 
+\begin{split}
+\mathrm{Var}(\hat{\beta}) &amp; =\mathrm{Var}((X&#39;X)^{-1}X&#39;y)\\
+ &amp; =(X&#39;X)^{-1}X&#39;\mathrm{Var}(y)((X&#39;X)^{-1}X&#39;)&#39;\\
+ &amp; =(X&#39;X)^{-1}X&#39;\mathrm{Var}(y)X(X&#39;X)^{-1}\\
+ &amp; =(X&#39;X)^{-1}X&#39;\sigma^{2}IX(X&#39;X)^{-1}\\
+ &amp; =(X&#39;X)^{-1}\sigma^{2}
+\end{split}
+\tag{3.6}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:var-beta1">\[\begin{equation} 
+\begin{split}
+a(\hat{\beta}) &amp; =a(s) \\
+ &amp; = hah\\
+\end{split}
+\tag{3.7}
+\end{equation}\]</span></p>
+
+<div class="theorem">
+<p><span id="thm:pyth" class="theorem"><strong>定理 3.1  (Pythagorean theorem)  </strong></span>For a right triangle, if <span class="math inline">\(c\)</span> denotes the length of the hypotenuse
+and <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> denote the lengths of the other two sides, we have</p>
+<span class="math display">\[a^2 + b^2 = c^2\]</span>
+</div>
+<p>see <a href="methods.html#thm:pyth">3.1</a></p>
+
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="methods.html#cb5-1"></a><span class="kw">plot</span>(cars)  <span class="co"># a scatterplot</span></span></code></pre></div>
+<div class="figure"><span id="fig:foo"></span>
+<img src="bookdown-demo_files/figure-html/foo-1.png" alt="A scatterplot of the data cars using base R graphics." width="672" />
+<p class="caption">
+图 3.1: A scatterplot of the data <code>cars</code> using <strong>base</strong> R graphics.
+</p>
+</div>
+<div class="figure"><span id="fig:chunk-label"></span>
+<img src="bookdown-demo_files/figure-html/chunk-label-1.png" alt="A figure caption." width="672" />
+<p class="caption">
+图 3.2: A figure caption.
+</p>
+</div>
+<p><img src="bookdown-demo_files/figure-html/chunk-label1-1.png" width="50%" /><img src="bookdown-demo_files/figure-html/chunk-label1-2.png" width="50%" /></p>
+<p><img src="http://ww1.sinaimg.cn/large/0065saiygy1g288zo2mgyg30hs0cw0vc.gif" /><!-- --></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="methods.html#cb6-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(</span>
+<span id="cb6-2"><a href="methods.html#cb6-2"></a>  <span class="kw">list</span>(</span>
+<span id="cb6-3"><a href="methods.html#cb6-3"></a>    <span class="kw">head</span>(iris[, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="dv">3</span>),</span>
+<span id="cb6-4"><a href="methods.html#cb6-4"></a>    <span class="kw">head</span>(mtcars[, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>], <span class="dv">5</span>)</span>
+<span id="cb6-5"><a href="methods.html#cb6-5"></a>  ),</span>
+<span id="cb6-6"><a href="methods.html#cb6-6"></a>  <span class="dt">caption =</span> <span class="st">&#39;A Tale of Two Tables.&#39;</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span></span>
+<span id="cb6-7"><a href="methods.html#cb6-7"></a>)</span></code></pre></div>
+<table class="kable_wrapper">
+<caption>
+<span id="tab:table1">表 3.1: </span>A Tale of Two Tables.
+</caption>
+<tbody>
+<tr>
+<td>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Sepal.Length</th>
+<th align="right">Sepal.Width</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">5.1</td>
+<td align="right">3.5</td>
+</tr>
+<tr class="even">
+<td align="right">4.9</td>
+<td align="right">3.0</td>
+</tr>
+<tr class="odd">
+<td align="right">4.7</td>
+<td align="right">3.2</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">mpg</th>
+<th align="right">cyl</th>
+<th align="right">disp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mazda RX4</td>
+<td align="right">21.0</td>
+<td align="right">6</td>
+<td align="right">160</td>
+</tr>
+<tr class="even">
+<td>Mazda RX4 Wag</td>
+<td align="right">21.0</td>
+<td align="right">6</td>
+<td align="right">160</td>
+</tr>
+<tr class="odd">
+<td>Datsun 710</td>
+<td align="right">22.8</td>
+<td align="right">4</td>
+<td align="right">108</td>
+</tr>
+<tr class="even">
+<td>Hornet 4 Drive</td>
+<td align="right">21.4</td>
+<td align="right">6</td>
+<td align="right">258</td>
+</tr>
+<tr class="odd">
+<td>Hornet Sportabout</td>
+<td align="right">18.7</td>
+<td align="right">8</td>
+<td align="right">360</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>To include literal backticks, use more backticks outside, e.g., you can use two backticks to preserve one backtick inside<a href="methods.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
